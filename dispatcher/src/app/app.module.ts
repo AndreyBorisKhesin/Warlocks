@@ -7,6 +7,7 @@ import { MapService } from './map.service';
 
 import { AgmCoreModule } from '@agm/core';
 import { MapComponent } from './map/map.component';
+import { PatientFormComponent } from './patient-form/patient-form.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { MapComponent } from './map/map.component';
     })
   ],
   providers: [ MapService ],
-  declarations: [ AppComponent, MapComponent ],
+  declarations: [ AppComponent, MapComponent, PatientFormComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

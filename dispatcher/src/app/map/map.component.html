@@ -11,11 +11,11 @@
         [label]="m.label">
 
       <agm-info-window>
-        <strong>{{responders[i].name}}</strong>
+        <strong>{{responders[i].name}} #{{responders[i].id}}</strong>
         <ul>
             <li *ngFor="let s of responders[i].skills">{{s}}</li>
         </ul>
-        <input type="button" value="Dispatch"/>
+        <input type="button" value="Dispatch" (click)="dispatch(responders[i].id)"/>
       </agm-info-window>
 
     </agm-marker>
