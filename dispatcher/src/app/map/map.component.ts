@@ -33,6 +33,7 @@ export class MapComponent implements OnInit {
     this.responders = this.mapService.getResponders();
     this.haveEmergency = true;
     this.emergency = this.getEmergency();
+    console.log("yay")
     console.log(this.emergency);
     if (this.haveEmergency) {
 
@@ -85,7 +86,7 @@ export class MapComponent implements OnInit {
     let minDistance = Infinity;
     let closestResponder = null;
     for (let r of this.responders) {
-      let dist = this.calculateDistance(r.lat, r.lng, emergency.lat, emergency.lng);
+      let dist = this.calculateDistance(r.lat, r.lng, emergency.Lat, emergency.Lng);
       if (dist < minDistance) {
         minDistance = dist;
         closestResponder = r;

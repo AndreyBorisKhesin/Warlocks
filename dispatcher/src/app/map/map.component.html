@@ -22,8 +22,8 @@
       </agm-info-window>
     </agm-marker>
     <agm-marker
-        [latitude]="emergency.lat"
-        [longitude]="emergency.lng"
+        [latitude]="emergency.Lat"
+        [longitude]="emergency.Lng"
         [label]=""
         [iconUrl]="getEmergencyIcon(emergency)"
         (markerClick)="emergencyClick(emergency); gm.lastOpen?.close(); gm.lastOpen = infoWindow">
