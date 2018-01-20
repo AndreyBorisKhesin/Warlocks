@@ -12,9 +12,4 @@ export class AppComponent {
   lng: number = -79.3978192;
 
   zoom: number = 13;
-  sex = ['Female', 'Male'];
-  submitted = false;
-  onSubmit() {
-    this.submitted = true;
-  }
 }

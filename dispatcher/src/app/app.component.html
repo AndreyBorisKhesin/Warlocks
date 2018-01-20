@@ -4,29 +4,4 @@
 <!-- the component as the initial center of the map: -->
 <app-map></app-map>
 
-<form class="form">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" required>
-  </div>
-
-  <div class="form-group">
-    <label for="sex">Sex</label>
-    <select class="form-control" id="sex" required>
-      <option *ngFor="let s of sex" [value]="s">{{s}}</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="age">Age</label>
-    <input type="number" class="form-control" id="age" required>
-  </div>
-
-  <div class="form-group">
-    <label for="symptoms">Symptoms</label>
-    <input type="text" class="form-control" id="symptoms">
-  </div>
-
-  <button type="submit" class="btn btn-success">Submit</button>
-
-</form>
+<app-patient-form></app-patient-form>
