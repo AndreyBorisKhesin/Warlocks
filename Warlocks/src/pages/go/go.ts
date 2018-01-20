@@ -40,13 +40,13 @@ export class GoPage {
 		this.alon = navParams.get('alon');
 		this.blat = navParams.get('blat');
 		this.blon = navParams.get('blon');
-		this.loc = new google.maps.LatLng(this.alat, this.alon);
-		this.dest = new google.maps.LatLng(this.blat, this.blon);
-		this.directionsService = new google.maps.DirectionsService();
         this.name = navParams.get('name');
         this.age = navParams.get('age');
         this.sex = navParams.get('sex');
         this.symptoms = navParams.get('symptoms');
+		this.loc = new google.maps.LatLng(this.alat, this.alon);
+		this.dest = new google.maps.LatLng(this.blat, this.blon);
+		this.directionsService = new google.maps.DirectionsService();
 	}
 
 	back() {
