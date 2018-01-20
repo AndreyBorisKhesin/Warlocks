@@ -10,7 +10,7 @@
         [latitude]="r.lat"
         [longitude]="r.lng"
         [label]=""
-        [iconUrl]="getIcon(r)"
+        [iconUrl]="getResponderIcon(r)"
         (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
       <agm-info-window #infoWindow>
@@ -20,6 +20,18 @@
         </ul>
         <input type="button" value="Dispatch" (click)="dispatch(r.id)"/>
       </agm-info-window>
+    </agm-marker>
+    <agm-marker
+        [latitude]="emergency.lat"
+        [longitude]="emergency.lng"
+        [label]=""
+        [iconUrl]="getEmergencyIcon(emergency)"
+        (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
+        <agm-info-window #infoWindow>
+            <strong>{{emergency.name}}, {{emergency.sex}}, {{emergency.age}}</strong>
+            <p>{{emergency.location}}</p>
+            <p>{{emergency.symptoms}}</p>
+        </agm-info-window>
     </agm-marker>
 </agm-map>

@@ -16,12 +16,14 @@ export class MapComponent implements OnInit {
     zoom: number = 13;
     responders: Responder[];
     haveEmergency: boolean;
+    emergency: Emergency;
 
     constructor(private mapService: MapService) { }
 
     ngOnInit() {
         this.responders = this.mapService.getResponders();
         this.haveEmergency = true;
+        this.emergency = this.getEmergency();
         if (this.haveEmergency) {
             this.mapStartEmergency(this.getEmergency());
         }
@@ -29,12 +31,12 @@ export class MapComponent implements OnInit {
 
     getEmergency(): Emergency {
         let em = new Emergency("Andrey Khesin", "male", 19,
-        "40 St George St, Toronto, ON M5S 2E4", 43.6596426, -79.3976676,
+        "40 St George St, Toronto, ON M5S 2E4", 43.6596426, -79.401676,
         "missing eyeball");
         return em;
     }
 
-    getIcon(responder: Responder) {
+    getResponderIcon(responder: Responder) {
         let path = '../../assets/';
         switch(responder.skills.length) {
             case 1:
@@ -46,6 +48,10 @@ export class MapComponent implements OnInit {
             default:
                 return path + 'medkit.png';
         }
+    }
+
+    getEmergencyIcon(emergency: Emergency) {
+        return '../../assets/emergency.png'
     }
 
     mapStartEmergency(em: Emergency): void {
