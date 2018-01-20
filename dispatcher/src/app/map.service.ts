@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
 import { environment } from '../environments/environment';
 import { Http } from '@angular/http';
+import { OneString } from './classes';
 
 @Injectable()
 export class MapService {
@@ -23,12 +24,12 @@ export class MapService {
   * Get emergency address from 911 call, and send emergency to dispatchers through api
   * Return responder
   */
-  startEmergency(em: Emergency): Promise<string> {
+  startEmergency(em: Emergency): Promise<OneString> {
     let url = `${environment.api}/emergency/start`;
     let reqBody = em
     return this.http.post(url, JSON.stringify(reqBody))
       .toPromise()
-      .then(response => response.json() as string)
+      .then(response => response.json() as OneString)
       .catch(this.handleError);
   }
 
