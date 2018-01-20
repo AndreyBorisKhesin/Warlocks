@@ -1,11 +1,12 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import json
 
 app = Flask(__name__)
 CORS(app)
 
 em = {}
-doctors = {} # Each doctor is identified by id; paired with curred location
+doctors = {'id':'342d'} # Each doctor is identified by id; paired with curred location
 
 @app.route('/', methods = ['POST'])
 def root():
@@ -22,28 +23,23 @@ def test1():
 
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():
+	print request.data
+	store = json.loads(request.data)
+	print store
+	print store['Lat']
+	print store['Lng']
 	em = {}
-	# em['name'] = request.values.get('Name', None)
-	# em['sex'] = request.values.get('Sex', None)
-	# em['age'] = request.values.get('Age', None)
-	# em['location'] = request.values.get('Location', None)
-	# em['lat'] = request.values.get('Lat', None)
-	# em['lng'] = request.values.get('Lng', None)
-	# em['symptoms'] = request.values.get('symptoms', None)
-	# if em['lat'] == None or em['lng'] == None:
-	# 	return "Need to provide latitude and longitude!"
-	# else:
-	# 	return jsonify(doctors)
-	# head = request.values.get('Name', None)
-	# if head == None:
-	# 	return "Need to provide a name!"
-	# else:
-	# 	return head
-	d = request.values.get('Age', None)
-	if d:
-		return d
+	em['name'] = store['Name']
+	em['sex'] = store['Sex']
+	em['age'] = store['Age']
+	#em['location'] = store['Location']
+	em['lat'] = store['Lat']
+	em['lng'] = store['Lng']
+	em['symptoms'] = store['Symptoms']
+	if em['lat'] == None or em['lng'] == None:
+		return "Need to provide latitude and longitude!"
 	else:
-		return "No age received"
+		return jsonify(doctors)
 
 def broadcast():
 	# Broadcast current emergency to the two closest doctors

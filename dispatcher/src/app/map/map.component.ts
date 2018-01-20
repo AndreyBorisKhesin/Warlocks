@@ -64,7 +64,7 @@ export class MapComponent implements OnInit {
 
     this.mapService.startEmergency(em).then(
       response => {
-        console.log(response['s']);
+        console.log(response);
       }
     )
 
