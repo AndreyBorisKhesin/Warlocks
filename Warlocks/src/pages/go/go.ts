@@ -9,6 +9,8 @@ import {
 	MarkerOptions,
 	Marker
 } from '@ionic-native/google-maps';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 @Component({
 	selector: 'page-go',
@@ -16,7 +18,7 @@ import {
 })
 export class GoPage {
 	constructor(public googleMaps: GoogleMaps,
-				public navCtrl:		NavController) {}
+		    public navCtrl:    NavController) {}
 
 	ionViewDidLoad() {
 		this.loadMap();

@@ -22,6 +22,11 @@ export class MapComponent implements OnInit {
     }
 
     dispatch(responderId: string) {
-        alert("Responder #" + responderId + " dispatched!");
+        // alert("Responder #" + responderId + " dispatched!");
+    }
+
+    getEmergency(): Emergency {
+        let em = new Emergency("Andrey Khesin", "male", 19, "40 St George St, Toronto, ON M5S 2E4", "missing eyeball");
+        return em;
     }
 }
