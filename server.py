@@ -9,9 +9,9 @@ def root():
 
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():
-	head = request.header['name'] or none
-	if not token:
-    	return custResponse(401, "Need to provide header!")
+	head = request.values.get('Name', None)
+	if head == None:
+		return "Need to provide header!"
 	else:
 		return head
 
