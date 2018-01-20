@@ -66,9 +66,9 @@ export class MapComponent implements OnInit {
       }
     )
 
-    let closest = this.findClosestResponder(em);
-    console.log("Closest responder: " + closest['responder'].name + ", " +
-      closest['distance'] + " meters");
+    // let closest = this.findClosestResponder(em);
+    // console.log("Closest responder: " + closest['responder'].name + ", " +
+    //   closest['distance'] + " meters");
   }
 
   calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number) {
