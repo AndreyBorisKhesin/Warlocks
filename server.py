@@ -26,7 +26,7 @@ def startEmergency():
 	# 	return "Need to provide latitude and longitude!"
 	# else:
 	# 	return jsonify(doctors)
-	return reqeust.values.get('Name', None);
+	return request.values.get('Name', None);
 
 def broadcast():
 	# Broadcast current emergency to the two closest doctors

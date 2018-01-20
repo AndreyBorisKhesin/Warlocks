@@ -12,7 +12,7 @@ export class PatientFormComponent implements OnInit {
   sex = ['Female', 'Male'];
   submitted = false;
 
-  model = new Emergency('', '', '', 43.6595053, -79.3978192, '');
+  model = new Emergency('', '', '', 43.6705053, -79.3978192, '');
 
   // For testing
   get currentEmergency() { return JSON.stringify(this.model); }
