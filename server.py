@@ -12,7 +12,7 @@ def root():
 	#do stuff with request.header style variables
 	return 'Borders Within Doctors - not haunted'
 
-@app.route('/test1', methods['POST'])
+@app.route('/test1', methods = ['POST'])
 def test1():
 	d = request.values.get('Age', None)
 	if d:
