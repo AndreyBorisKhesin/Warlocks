@@ -22,13 +22,25 @@ agm-map {
   margin-left: 10px;
 }
 
-h1 {
+.header img {
+  float: left;
+  width: 64px;
+  height: 64px;
+  background: #555;
+}
+
+.header h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
   font-size: 14pt;
   font-family: Arial;
   font-style: italic;
   font-weight: bold;
   color: black;
   line-height: 16pt;
+  position: relative;
+  margin-bottom: 30px;
 }
 
 .thickness {

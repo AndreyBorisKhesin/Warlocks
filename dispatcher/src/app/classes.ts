@@ -12,17 +12,17 @@ export class Emergency {
     age: number;
     location: string;
     lat: number;
-    long: number;
+    lng: number;
     symptoms: string;
 
     constructor(_name: string, _sex: string, _age: number, _location: string,
-      _lat: number, _long: number, _symptoms: string){
+      _lat: number, _lng: number, _symptoms: string){
         this.name = _name;
         this.sex = _sex;
         this.age = _age;
         this.location = _location;
         this.lat = _lat;
-        this.long = _long;
+        this.lng = _lng;
         this.symptoms = _symptoms;
     }
 }
