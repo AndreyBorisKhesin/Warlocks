@@ -1,4 +1,7 @@
 Warlocks/node_modules/
+Warlocks/platforms/
+Warlocks/plugins/
+__pycache__/
 dispatcher/node_modules/
 Warlocks/www/
 .idea/

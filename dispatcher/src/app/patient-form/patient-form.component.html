@@ -2,29 +2,28 @@
 
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" required>
+    <input type="text" class="form-control" id="name" required
+           [(ngModel)]="model.name" name="name">
   </div>
 
   <div class="form-group">
     <label for="sex">Sex</label>
-    <select class="form-control" id="sex" required>
+    <select class="form-control" id="sex" required
+            [(ngModel)]="model.sex" name="sex">
       <option *ngFor="let s of sex" [value]="s">{{s}}</option>
     </select>
   </div>
 
   <div class="form-group">
     <label for="age">Age</label>
-    <input type="number" class="form-control" id="age" required>
-  </div>
-
-  <div class="form-group">
-    <label for="location">Location</label>
-    <input type="text" class="form-control" id="location">
+    <input type="number" class="form-control" id="age" required
+           [(ngModel)]="model.age" name="age">
   </div>
 
   <div class="form-group">
     <label for="symptoms">Symptoms</label>
-    <input type="text" class="form-control" id="symptoms">
+    <input type="text" class="form-control" id="symptoms" required
+           [(ngModel)]="model.symptoms" name="symptoms">
   </div>
 
   <button type="submit" class="btn btn-success">Submit</button>
