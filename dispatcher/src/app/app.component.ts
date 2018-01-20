@@ -8,8 +8,4 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title: string = 'Doctors within Borders';
-  lat: number = 43.6595053;
-  lng: number = -79.3978192;
-
-  zoom: number = 13;
 }
