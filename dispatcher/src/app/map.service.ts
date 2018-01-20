@@ -21,7 +21,7 @@ export class MapService {
 
   /*
   * Get emergency address from 911 call, and send emergency to dispatchers through api
-  * Return responder
+  * Return all responders that are on duty
   */
   startEmergency(em: Emergency): Promise<Responder[]> {
     let url = `${environment.api}/emergency/start`;
@@ -49,6 +49,13 @@ export class MapService {
         return doctors;
       })
       .catch(this.handleError);
+  }
+
+  /*
+  * Send the list of Ids in sorted order, closest to em first
+  */
+  SendClosestResponders(Sorted: string[]) {
+    
   }
 
   private handleError(error: any): Promise<any> {
