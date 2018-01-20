@@ -6,9 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patient-form.component.css']
 })
 export class PatientFormComponent implements OnInit {
-
   sex = ['Female', 'Male'];
   submitted = false;
+
+  ngOnInit() {
+  }
+
   onSubmit() {
     this.submitted = true;
   }
