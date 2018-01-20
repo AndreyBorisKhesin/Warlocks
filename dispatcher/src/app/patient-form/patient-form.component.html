@@ -22,8 +22,8 @@
 
   <div class="form-group">
     <label for="symptoms">Symptoms</label>
-    <input type="text" class="form-control" id="symptoms" required
-           [(ngModel)]="model.symptoms" name="symptoms">
+    <textarea name="Text1" cols="40" rows="6" class="form-control" id="symptoms" required
+              [(ngModel)]="model.symptoms" name="symptoms"></textarea>
   </div>
 
   <button type="submit" class="btn btn-success" (click)="newEmergency(); patientForm.reset()"
@@ -33,5 +33,5 @@
 
 </form>
 
-For testing only <br/>
-Emergency {{currentEmergency}}
+<!--For testing only <br/>-->
+<!--Emergency {{currentEmergency}}-->
