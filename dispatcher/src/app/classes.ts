@@ -3,3 +3,7 @@ export class Responder {
     name: string;
     skills: string[];
 }
+
+export class Emergency {
+  
+}
