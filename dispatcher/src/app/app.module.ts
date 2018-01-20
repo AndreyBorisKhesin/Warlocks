@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MapService } from './map.service';
+import { ShareFormService } from './share-form.service';
 
 import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader } from '@agm/core';
 import { MapComponent } from './map/map.component';
@@ -27,7 +28,8 @@ import { HttpModule } from '@angular/http';
   ],
   providers: [
     MapService,
-    HttpClientModule
+    HttpClientModule,
+    ShareFormService
   ],
   declarations: [AppComponent, MapComponent, PatientFormComponent],
   bootstrap: [AppComponent]

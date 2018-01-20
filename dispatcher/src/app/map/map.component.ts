@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MapService } from '../map.service';
 import { Responder } from '../classes';
 import { Emergency } from '../classes';
+import { ShareFormService } from '../share-form.service';
 
 @Component({
   selector: 'app-map',
@@ -20,17 +21,20 @@ export class MapComponent implements OnInit {
 
     getEmergency(): Emergency {
 
-        let em = new Emergency("Andrey Khesin", "male", "19", "43.6605053", "-79.3988192", "missing eyeball");
-        return em;
+        return this.shareFormService.sharedata();
 
     }
 
-  constructor(private mapService: MapService) { }
+  constructor(private mapService: MapService,
+              private shareFormService: ShareFormService) {
+  }
 
   ngOnInit() {
     this.responders = this.mapService.getResponders();
     this.haveEmergency = true;
     this.emergency = this.getEmergency();
+    console.log("yay")
+    console.log(this.emergency);
     if (this.haveEmergency) {
 
     }

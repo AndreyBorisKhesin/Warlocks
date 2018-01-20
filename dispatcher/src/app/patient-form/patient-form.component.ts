@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Emergency } from '../classes';
+import { ShareFormService } from '../share-form.service';
 
 @Component({
   selector: 'app-patient-form',
@@ -15,6 +16,10 @@ export class PatientFormComponent implements OnInit {
 
   // For testing
   get currentEmergency() { return JSON.stringify(this.model); }
+
+  public constructor(private shareFormService: ShareFormService) {
+    this.shareFormService.getData(this.model);
+  }
 
   ngOnInit() {
   }
