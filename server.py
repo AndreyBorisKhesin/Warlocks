@@ -20,7 +20,7 @@ def startEmergency():
 	em['lat'] = request.values.get('Lat', None)
 	em['lng'] = request.values.get('Lng', None)
 	em['symptoms'] = request.values.get('symptoms', None)
-	if em['lat'] == None or em['lng'] == none:
+	if em['lat'] == None or em['lng'] == None:
 		return "Need to provide latitude and longitude!"
 	else:
 		broadcast()
