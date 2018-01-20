@@ -7,7 +7,7 @@ import { RESPONDERS } from './mock-responders';
 import 'rxjs/add/operator/toPromise';
 
 import { environment } from '../environments/environment';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions} from '@angular/http';
 import { OneString } from './classes';
 import { Response } from '@angular/http';
 
@@ -29,7 +29,9 @@ export class MapService {
     let reqBody = em;
     console.log(reqBody);
     console.log(JSON.stringify(reqBody));
-    return this.http.post(url, JSON.stringify(reqBody))
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(url, JSON.stringify(reqBody), options)
       .toPromise()
       .then(response => {
         console.log(response);
