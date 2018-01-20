@@ -43,5 +43,15 @@ export class MapService {
     return Promise.reject(error.message || error);
   }
 
+  test1(): void {
+    let url = `${environment.api}/emergency/start`;
+    let reqBody = {
+        "Age": "Twenty"
+    };
+    console.log(JSON.stringify(reqBody));
+    this.http.post(url, JSON.stringify(reqBody)).toPromise().then(
+      response => { console.log(response); }
+    )
+  }
 
 }

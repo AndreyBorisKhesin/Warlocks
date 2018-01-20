@@ -12,6 +12,14 @@ def root():
 	#do stuff with request.header style variables
 	return 'Borders Within Doctors - not haunted'
 
+@app.route('/test1', methods['POST'])
+def test1():
+	d = request.values.get('Age', None)
+	if d:
+		return d
+	else:
+		return "No age received"
+
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():
 	em = {}
@@ -26,11 +34,12 @@ def startEmergency():
 	# 	return "Need to provide latitude and longitude!"
 	# else:
 	# 	return jsonify(doctors)
-	head = request.values.get('Name', None)
-	if head == None:
-		return "Need to provide a name!"
-	else:
-		return head
+	# head = request.values.get('Name', None)
+	# if head == None:
+	# 	return "Need to provide a name!"
+	# else:
+	# 	return head
+	return "commented out"
 
 def broadcast():
 	# Broadcast current emergency to the two closest doctors
