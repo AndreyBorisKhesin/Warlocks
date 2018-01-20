@@ -26,12 +26,16 @@ export class MapService {
   */
   startEmergency(em: Emergency): Promise<OneString> {
     let url = `${environment.api}/emergency/start`;
-    let reqBody = em;
-    console.log(reqBody);
-    console.log(JSON.stringify(reqBody));
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    // let reqBody = em;
+    // console.log(reqBody);
+    // console.log(JSON.stringify(reqBody));
+    let body = {}
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Age': 'Twenty'
+   });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(url, JSON.stringify(reqBody), options)
+    return this.http.post(url, body, options)
       .toPromise()
       .then(response => {
         console.log(response);

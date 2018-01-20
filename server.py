@@ -39,7 +39,11 @@ def startEmergency():
 	# 	return "Need to provide a name!"
 	# else:
 	# 	return head
-	return "commented out"
+	d = request.values.get('Age', None)
+	if d:
+		return d
+	else:
+		return "No age received"
 
 def broadcast():
 	# Broadcast current emergency to the two closest doctors
