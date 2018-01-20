@@ -9,7 +9,6 @@ import { GoPage } from '../go/go';
 	templateUrl: 'on.html'
 })
 export class OnPage {
-
 	constructor(public navCtrl: NavController) {
 
 	}
@@ -21,5 +20,4 @@ export class OnPage {
 	map() {
 		this.navCtrl.push(GoPage);
 	}
-
 }
