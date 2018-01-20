@@ -33,6 +33,7 @@ export class MapService {
     return this.http.post(url, JSON.stringify(reqBody))
       .toPromise()
       .then(response => {
+        console.log(response);
         response.json() as OneString;
       })
       .catch(this.handleError);
