@@ -9,6 +9,9 @@ import { AgmCoreModule } from '@agm/core';
 import { MapComponent } from './map/map.component';
 import { PatientFormComponent } from './patient-form/patient-form.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -16,9 +19,14 @@ import { PatientFormComponent } from './patient-form/patient-form.component';
     FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD_szadTrwGStDYgHDkCULZmZ9jls15LaU'
-    })
+    }),
+    HttpClientModule,
+    HttpModule
   ],
-  providers: [ MapService ],
+  providers: [
+    MapService,
+    HttpClientModule
+  ],
   declarations: [ AppComponent, MapComponent, PatientFormComponent ],
   bootstrap: [ AppComponent ]
 })
