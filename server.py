@@ -15,17 +15,18 @@ def root():
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():
 	em = {}
-	em['name'] = request.values.get('Name', None)
-	em['sex'] = request.values.get('Sex', None)
-	em['age'] = request.values.get('Age', None)
-	em['location'] = request.values.get('Location', None)
-	em['lat'] = request.values.get('Lat', None)
-	em['lng'] = request.values.get('Lng', None)
-	em['symptoms'] = request.values.get('symptoms', None)
-	if em['lat'] == None or em['lng'] == None:
-		return "Need to provide latitude and longitude!"
-	else:
-		return jsonify(doctors)
+	# em['name'] = request.values.get('Name', None)
+	# em['sex'] = request.values.get('Sex', None)
+	# em['age'] = request.values.get('Age', None)
+	# em['location'] = request.values.get('Location', None)
+	# em['lat'] = request.values.get('Lat', None)
+	# em['lng'] = request.values.get('Lng', None)
+	# em['symptoms'] = request.values.get('symptoms', None)
+	# if em['lat'] == None or em['lng'] == None:
+	# 	return "Need to provide latitude and longitude!"
+	# else:
+	# 	return jsonify(doctors)
+	return reqeust.values.get('Name', None);
 
 def broadcast():
 	# Broadcast current emergency to the two closest doctors
