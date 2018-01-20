@@ -22,7 +22,7 @@ export class MapComponent implements OnInit {
     }
 
     dispatch(responderId: string) {
-        alert("Responder #" + responderId + " dispatched!");
+        // alert("Responder #" + responderId + " dispatched!");
     }
 
     getEmergency(): Emergency {

@@ -1,6 +1,7 @@
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
 <agm-map
+    #gm
     [latitude]="lat"
     [longitude]="lng"
     [zoom]="zoom">
@@ -8,9 +9,10 @@
         *ngFor="let r of responders; let i = index"
         [latitude]="r.lat"
         [longitude]="r.lng"
-        [label]="r.name">
+        [label]="r.name"
+        (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
-      <agm-info-window>
+      <agm-info-window #infoWindow>
         <strong>{{r.name}} #{{r.id}}</strong>
         <ul>
             <li *ngFor="let s of r.skills">{{s}}</li>
