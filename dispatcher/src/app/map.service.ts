@@ -7,7 +7,7 @@ import { RESPONDERS } from './mock-responders';
 import 'rxjs/add/operator/toPromise';
 
 import { environment } from '../environments/environment';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions} from '@angular/http';
 import { OneString } from './classes';
 import { Response } from '@angular/http';
 
@@ -26,10 +26,16 @@ export class MapService {
   */
   startEmergency(em: Emergency): Promise<OneString> {
     let url = `${environment.api}/emergency/start`;
-    let reqBody = em;
-    console.log(reqBody);
-    console.log(JSON.stringify(reqBody));
-    return this.http.post(url, JSON.stringify(reqBody))
+    // let reqBody = em;
+    // console.log(reqBody);
+    // console.log(JSON.stringify(reqBody));
+    let body = {}
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Age': 'Twenty'
+   });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(url, body, options)
       .toPromise()
       .then(response => {
         console.log(response);
@@ -43,5 +49,15 @@ export class MapService {
     return Promise.reject(error.message || error);
   }
 
+  test1(): void {
+    let url = `${environment.api}/emergency/start`;
+    let reqBody = {
+        "Age": "Twenty"
+    };
+    console.log(JSON.stringify(reqBody));
+    this.http.post(url, JSON.stringify(reqBody)).toPromise().then(
+      response => { console.log(response); }
+    )
+  }
 
 }

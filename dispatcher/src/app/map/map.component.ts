@@ -33,8 +33,6 @@ export class MapComponent implements OnInit {
     this.responders = this.mapService.getResponders();
     this.haveEmergency = true;
     this.emergency = this.getEmergency();
-    console.log("yay")
-    console.log(this.emergency);
     if (this.haveEmergency) {
 
     }
