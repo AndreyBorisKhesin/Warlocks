@@ -26,7 +26,11 @@ def startEmergency():
 	# 	return "Need to provide latitude and longitude!"
 	# else:
 	# 	return jsonify(doctors)
-	return reqeust.values.get('Name', None);
+	head = request.values.get('Name', None)
+	if head == None:
+		return "Need to provide a name!"
+	else:
+		return head
 
 def broadcast():
 	# Broadcast current emergency to the two closest doctors
