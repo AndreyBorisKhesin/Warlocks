@@ -35,6 +35,8 @@ export class MapComponent implements OnInit {
     }
 
     mapStartEmergency(em: Emergency): void {
-
+        // this.mapService.startEmergency().then(
+        //
+        // );
     }
 }
