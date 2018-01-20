@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Patient } from '../patient.model';
+import { Emergency } from '../classes';
 
 @Component({
   selector: 'app-patient-form',
@@ -11,16 +11,18 @@ export class PatientFormComponent implements OnInit {
   sex = ['Female', 'Male'];
   submitted = false;
 
-  model = new Patient('', '', 0, '');
+  model = new Emergency('', '', '', 43.6595053, -79.3978192, '');
 
   // For testing
-  get currentPatient() { return JSON.stringify(this.model); }
+  get currentEmergency() { return JSON.stringify(this.model); }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    this.submitted = true;
+  newEmergency() {
+    // this.model = new Emergency('', '', '',  '');
+    console.log(this.model.name);
+    return this.model;
   }
 
 }

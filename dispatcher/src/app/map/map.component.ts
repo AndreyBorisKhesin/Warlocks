@@ -30,10 +30,10 @@ export class MapComponent implements OnInit {
     }
 
     getEmergency(): Emergency {
-        let em = new Emergency("Andrey Khesin", "male", 19,
-        "40 St George St, Toronto, ON M5S 2E4", 43.6596426, -79.401676,
-        "missing eyeball");
+
+        let em = new Emergency("Andrey Khesin", "male", "19", 43.6595053, -79.3978192, "missing eyeball");
         return em;
+
     }
 
     getResponderIcon(responder: Responder) {
