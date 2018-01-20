@@ -10,10 +10,6 @@ agm-map {
   border-left: 5px solid #a94442;
 } */
 
-.title {
-  background-color: red;
-}
-
 .map-column {
   float: left;
   width: 75%;
@@ -24,4 +20,44 @@ agm-map {
   float: left;
   width: 20%;
   margin-left: 10px;
+}
+
+h1 {
+  font-size: 14pt;
+  font-family: Arial;
+  font-style: italic;
+  font-weight: bold;
+  color: black;
+  line-height: 16pt;
+}
+
+.thickness {
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid red;
+  margin-bottom: 2px;
+}
+
+html {
+  position:relative;
+  min-height: 100%;
+}
+
+/*Normalize html and body elements,this style is just good to have*/
+html, body {
+  margin: 0;
+  padding: 0;
+}
+.pageContentWrapper{
+  margin-bottom:100px;/* Height of footer*/
+}
+.footer{
+  padding: 0.8em;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 7%;
+  background:#ccc;
+  text-align: center;
 }
