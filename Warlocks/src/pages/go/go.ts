@@ -35,6 +35,8 @@ export class GoPage {
 				tilt: 30
 			}
 		};
+
+		console.log('this work?');
 	
 		this.map = this.googleMaps.create('map_canvas', mapOptions);
 	
