@@ -62,10 +62,10 @@ export class MapComponent implements OnInit {
 
     this.mapService.startEmergency(em).then(
       response => {
-        console.log(response);
+        console.log(response['s']);
       }
     )
-    
+
     let closest = this.findClosestResponder(em);
     console.log("Closest responder: " + closest['responder'].name + ", " +
       closest['distance'] + " meters");

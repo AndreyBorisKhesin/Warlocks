@@ -24,3 +24,7 @@ export class Emergency {
         this.symptoms = _symptoms;
     }
 }
+
+export class OneString {
+    s: string;
+}
