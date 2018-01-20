@@ -1,4 +1,4 @@
-<form class="form" #patientForm="ngForm" (ngSubmit)="onSubmit()">
+<form class="form" #patientForm="ngForm" (ngSubmit)="onSubmit(form.value)">
 
   <div class="form-group">
     <label for="name">Name</label>
@@ -26,7 +26,7 @@
            [(ngModel)]="model.symptoms" name="symptoms">
   </div>
 
-  <button type="submit" class="btn btn-success" (click)="newEmergency()">
+  <button type="submit" class="btn btn-success" (click)="newEmergency()" [disabled]="!patientForm.valid">
     Submit
   </button>
 
