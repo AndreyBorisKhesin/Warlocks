@@ -66,9 +66,9 @@ export class MapComponent implements OnInit {
       }
     )
 
-    // let closest = this.findClosestResponder(em);
-    // console.log("Closest responder: " + closest['responder'].name + ", " +
-    //   closest['distance'] + " meters");
+    let closest = this.findClosestResponder(em);
+    console.log("Closest responder: " + closest['responder'].name + ", " +
+      closest['distance'] + " meters");
   }
 
   calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number) {
@@ -82,7 +82,7 @@ export class MapComponent implements OnInit {
     let minDistance = Infinity;
     let closestResponder = null;
     for (let r of this.responders) {
-      let dist = this.calculateDistance(r.lat, r.lng, emergency.lat, emergency.lng);
+      let dist = this.calculateDistance(r.lat, r.lng, emergency.Lat, emergency.Lng);
       if (dist < minDistance) {
         minDistance = dist;
         closestResponder = r;

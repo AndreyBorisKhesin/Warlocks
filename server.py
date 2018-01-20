@@ -25,10 +25,7 @@ def startEmergency():
 	if em['lat'] == None or em['lng'] == None:
 		return "Need to provide latitude and longitude!"
 	else:
-		broadcast()
-		ret = {}
-		ret['s'] = "Start emergency successful! lat = " + em['lat'] + " lng = " + em["lng"]
-		return jsonify(ret)
+		return jsonify(doctors)
 
 def broadcast():
 	# Broadcast current emergency to the two closest doctors
