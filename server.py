@@ -24,6 +24,7 @@ def startEmergency():
 		return "Need to provide latitude and longitude!"
 	else:
 		broadcast()
+		return "Start emergency successful! lat = " + em['Lat'] + "lng = " + em["Lng"]
 
 def broadcast():
 	# Broadcast current emergency to the two closest doctors
