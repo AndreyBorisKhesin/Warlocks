@@ -7,7 +7,9 @@
     "is_top_level": true,
     "variables": {
       "API_KEY_FOR_ANDROID": "AIzaSyBRKYSQSHsx-SZD8PoIJlz87D7wJBhDdZg",
-      "API_KEY_FOR_IOS": "AIzaSyD9-rYhubYjf7drmiQFdNk_k3ro9o32X-c"
+      "API_KEY_FOR_IOS": "AIzaSyD9-rYhubYjf7drmiQFdNk_k3ro9o32X-c",
+      "LOCATION_WHEN_IN_USE_DESCRIPTION": "Show your location on the map",
+      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "Trace your location on the map"
     }
   },
   "ionic-plugin-keyboard": {
@@ -48,6 +50,14 @@
       "id": "cordova-plugin-ionic-webview@^1.1.11"
     },
     "is_top_level": true,
+    "variables": {}
+  },
+  "com.googlemaps.ios": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk"
+    },
+    "is_top_level": false,
     "variables": {}
   }
 }
