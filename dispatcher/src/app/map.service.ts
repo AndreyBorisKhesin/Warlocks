@@ -5,6 +5,10 @@ import { Responder } from './responder';
 import { MARKERS } from './mock-markers';
 import { RESPONDERS } from './mock-responders';
 
+import 'rxjs/add/operator/toPromise';
+
+import { environment } from '../environments/environment';
+
 @Injectable()
 export class MapService {
   constructor() { }
