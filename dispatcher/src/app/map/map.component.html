@@ -11,9 +11,11 @@
         [label]="m.label">
 
       <agm-info-window>
-        <strong>InfoWindow content</strong>
-        <p>More content here</p>
-        <input type="button" ="Click me"/>
+        <strong>{{responders[i].name}}</strong>
+        <ul>
+            <li *ngFor="let s of responders[i].skills">{{s}}</li>
+        </ul>
+        <input type="button" value="Dispatch"/>
       </agm-info-window>
 
     </agm-marker>

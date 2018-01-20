@@ -7,13 +7,13 @@ export const MARKERS: Marker[] = [
         label: 'M1'
     },
     {
-        lat: 43.6795053,
-        lng: -79.3778192,
+        lat: 43.6695053,
+        lng: -79.3878192,
         label: 'M2'
     },
     {
-        lat: 51.723858,
-        lng: 7.895982,
+        lat: 43.6505053,
+        lng: -79.399192,
         label: 'M3'
     }
 ]

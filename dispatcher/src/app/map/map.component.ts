@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MapService } from '../map.service';
+import { Responder } from '../responder';
 
 @Component({
   selector: 'app-map',
@@ -12,11 +13,13 @@ export class MapComponent implements OnInit {
     lng: number = -79.3978192;
     zoom: number = 13;
     markers: Marker[];
+    responders: Responder[];
 
     constructor(private mapService: MapService) { }
 
     ngOnInit() {
         this.markers = this.mapService.getMarkers();
+        this.responders = this.mapService.getResponders();
     }
 }
 
