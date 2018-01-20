@@ -21,6 +21,10 @@ export class MapComponent implements OnInit {
         this.markers = this.mapService.getMarkers();
         this.responders = this.mapService.getResponders();
     }
+
+    dispatch(responderId: string) {
+        alert("Responder #" + responderId + " dispatched!");
+    }
 }
 
 export interface Marker {

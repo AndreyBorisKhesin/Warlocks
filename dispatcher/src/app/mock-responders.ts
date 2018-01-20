@@ -7,7 +7,7 @@ export const SKILLS: string[] = [
 ]
 
 export const RESPONDERS: Responder[] = [
-    {name: 'John Doe', skills: ['CPR']},
-    {name: 'Jane Smith', skills: ['CPR', 'First Aid']},
-    {name: 'Good Samaritan', skills: ['First Aid', 'Med kit']}
+    {id: 'ax01', name: 'John Doe', skills: ['CPR']},
+    {id: 'bt34', name: 'Jane Smith', skills: ['CPR', 'First Aid']},
+    {id: 'ffg3', name: 'Good Samaritan', skills: ['First Aid', 'Med kit']}
 ]
