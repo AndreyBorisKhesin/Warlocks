@@ -29,4 +29,18 @@ export class MapComponent implements OnInit {
         let em = new Emergency("Andrey Khesin", "male", 19, "40 St George St, Toronto, ON M5S 2E4", "missing eyeball");
         return em;
     }
+
+    getIcon(responder: Responder) {
+        let path = '../../assets/';
+        switch(responder.skills.length) {
+            case 1:
+                return path + 'cpr.png';
+            case 2:
+                return path + 'firstaid.png';
+            case 3:
+                return path + 'medkit.png';
+            default:
+                return path + 'medkit.png';
+        }
+    }
 }

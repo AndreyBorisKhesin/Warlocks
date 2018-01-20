@@ -24,7 +24,7 @@ export const RESPONDERS: Responder[] = [
     {
         id: 'ffg3',
         name: 'Good Samaritan',
-        skills: ['First Aid', 'Med kit'],
+        skills: ['CPR', 'First Aid', 'Med kit'],
         lat: 43.6505053,
         lng: -79.399192
     }
