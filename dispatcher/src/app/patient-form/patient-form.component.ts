@@ -21,7 +21,7 @@ export class PatientFormComponent implements OnInit {
 
   newEmergency() {
     // this.model = new Emergency('', '', '',  '');
-    console.log(this.model.name);
+    console.log(this.model.Name);
     return this.model;
   }
 

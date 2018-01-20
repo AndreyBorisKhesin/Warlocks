@@ -20,7 +20,7 @@ export class MapComponent implements OnInit {
 
     getEmergency(): Emergency {
 
-        let em = new Emergency("Andrey Khesin", "male", "19", 43.6605053, -79.3978192, "missing eyeball");
+        let em = new Emergency("Andrey Khesin", "male", "19", 43.6605053, -79.3988192, "missing eyeball");
         return em;
 
     }
