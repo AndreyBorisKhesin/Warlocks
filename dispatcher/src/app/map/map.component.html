@@ -29,9 +29,11 @@
         (markerClick)="emergencyClick(emergency); gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
         <agm-info-window #infoWindow>
-            <strong>{{emergency.name}}, {{emergency.sex}}, {{emergency.age}}</strong>
-            <p>{{emergency.location}}</p>
-            <p>{{emergency.symptoms}}</p>
+          <strong>Name: </strong>{{emergency.name}}<br/>
+          <strong>Sex: </strong>{{emergency.sex}}<br/>
+          <strong>Age: </strong>{{emergency.age}}<br/>
+          <strong>Location: </strong>{{emergency.location}}<br/>
+          <strong>Symptoms: </strong><p>{{emergency.symptoms}}</p>
         </agm-info-window>
     </agm-marker>
 </agm-map>
