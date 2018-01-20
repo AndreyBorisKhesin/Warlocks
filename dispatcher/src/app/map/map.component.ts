@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MapService } from '../map.service';
-import { Responder } from '../responder';
+import { Responder } from '../classes';
+import { Emergency } from '../classes';
 
 @Component({
   selector: 'app-map',

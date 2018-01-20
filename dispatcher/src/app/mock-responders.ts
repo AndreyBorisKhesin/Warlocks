@@ -1,4 +1,4 @@
-import { Responder } from './responder';
+import { Responder } from './classes';
 
 export const SKILLS: string[] = [
     'CPR',

@@ -5,5 +5,5 @@ export class Responder {
 }
 
 export class Emergency {
-  
+
 }
