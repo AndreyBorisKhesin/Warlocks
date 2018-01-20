@@ -5,9 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MapService } from './map.service';
 
-import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule, MapsAPILoader, NoOpMapsAPILoader} from '@agm/core';
 import { MapComponent } from './map/map.component';
 import { PatientFormComponent } from './patient-form/patient-form.component';
+import {} from '@types/googlemaps';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { PatientFormComponent } from './patient-form/patient-form.component';
     CommonModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyD_szadTrwGStDYgHDkCULZmZ9jls15LaU'
+      apiKey: 'AIzaSyD_szadTrwGStDYgHDkCULZmZ9jls15LaU',
+      libraries: ['geometry']
     })
   ],
   providers: [ MapService ],

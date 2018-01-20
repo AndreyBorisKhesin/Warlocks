@@ -13,7 +13,7 @@ export class MapComponent implements OnInit {
     title: string = 'Doctors within Borders';
     lat: number = 43.6595053;
     lng: number = -79.3978192;
-    zoom: number = 13;
+    zoom: number = 14;
     responders: Responder[];
     haveEmergency: boolean;
     emergency: Emergency;
@@ -25,7 +25,7 @@ export class MapComponent implements OnInit {
         this.haveEmergency = true;
         this.emergency = this.getEmergency();
         if (this.haveEmergency) {
-            this.mapStartEmergency(this.getEmergency());
+
         }
     }
 
@@ -50,10 +50,37 @@ export class MapComponent implements OnInit {
         }
     }
 
+    emergencyClick(emergency: Emergency) {
+        this.mapStartEmergency(emergency);
+    }
+
     getEmergencyIcon(emergency: Emergency) {
         return '../../assets/emergency.png'
     }
 
     mapStartEmergency(em: Emergency): void {
+        let closest = this.findClosestResponder(em);
+        console.log("Closest responder: " + closest['responder'].name + ", " +
+            closest['distance'] + " meters");
+    }
+
+    calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number) {
+        let point1 = new google.maps.LatLng(lat1, lng1);
+        let point2 = new google.maps.LatLng(lat2, lng2);
+        let distance = google.maps.geometry.spherical.computeDistanceBetween(point1, point2);
+        return distance;
+    }
+
+    findClosestResponder(emergency: Emergency) {
+        let minDistance = Infinity;
+        let closestResponder = null;
+        for (let r of this.responders) {
+            let dist = this.calculateDistance(r.lat, r.lng, emergency.lat, emergency.lng);
+            if(dist < minDistance) {
+                minDistance = dist;
+                closestResponder = r;
+            }
+        }
+        return {'responder': closestResponder, 'distance': minDistance};
     }
 }
