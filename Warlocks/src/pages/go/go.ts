@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
 import {
 	GoogleMaps,
 	GoogleMap,
@@ -12,53 +13,54 @@ import {
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
+declare var google;
+
 @Component({
 	selector: 'page-go',
 	templateUrl: 'go.html'
 })
 export class GoPage {
-	constructor(public googleMaps: GoogleMaps,
-		    public navCtrl:    NavController) {}
+	map: any;
+	myloc: Marker;
+	
+	constructor(private platform: Platform) {
 
-	ionViewDidLoad() {
-		this.loadMap();
 	}
-
-	loadMap() {
-		let mapOptions: GoogleMapOptions = {
-			camera: {
-				target: {
-					lat: 43.0741904,
-					lng: -89.3809802
-				},
-				zoom: 18,
-				tilt: 30
-			}
-		};
-
-		console.log('this work?');
-	
-		this.map = this.googleMaps.create('map_canvas', mapOptions);
-	
-		// Wait the MAP_READY before using any methods.
-		this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-			console.log('Map is ready!');
-	
-			// Now you can use all methods safely.
-			this.map.addMarker({
-				title: 'Ionic',
-				icon: 'blue',
-				animation: 'DROP',
-				position: {
-					lat: 43.0741904,
-					lng: -89.3809802
+ 
+	ionViewDidLoad(){
+		this.initializeMap();
+	}
+ 
+	initializeMap() {
+ 
+		let locationOptions = {timeout: 20000, enableHighAccuracy: true};
+ 
+		navigator.geolocation.getCurrentPosition(
+ 
+			(position) => {
+				let options = {
+					center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+					zoom: 16,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
 				}
-			}).then(marker => {
-				marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-					alert('clicked');
+ 
+				this.map = new google.maps.Map(document.getElementById("map_canvas"), options);
+
+				this.myloc = new google.maps.Marker({
+					clickable: false,
+					icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+						new google.maps.Size(22,22),
+						new google.maps.Point(0,18),
+						new google.maps.Point(11,11)),
+					shadow: null,
+					zIndex: 999,
+					map: this.map
 				});
-			});
-	
-		});
+
+				this.myloc.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+			}, (error) => {
+				console.log(error);
+			}, locationOptions
+		);
 	}
 }

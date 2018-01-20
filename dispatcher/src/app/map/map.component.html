@@ -26,7 +26,7 @@
         [longitude]="emergency.lng"
         [label]=""
         [iconUrl]="getEmergencyIcon(emergency)"
-        (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+        (markerClick)="emergencyClick(emergency); gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
         <agm-info-window #infoWindow>
             <strong>{{emergency.name}}, {{emergency.sex}}, {{emergency.age}}</strong>

@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 em = {}
 doctors = {} # Each doctor is identified by id; paired with curred location
@@ -24,6 +26,7 @@ def startEmergency():
 		return "Need to provide latitude and longitude!"
 	else:
 		broadcast()
+		return "Start emergency successful! lat = " + em['lat'] + " lng = " + em["lng"]
 
 def broadcast():
 	# Broadcast current emergency to the two closest doctors
