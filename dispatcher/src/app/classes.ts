@@ -7,21 +7,21 @@ export class Responder {
 }
 
 export class Emergency {
-    name: string;
-    sex: string;
-    age: string;
-    lat: number;
-    lng: number;
-    symptoms: string;
+    Name: string;
+    Sex: string;
+    Age: string;
+    Lat: number;
+    Lng: number;
+    Symptoms: string;
 
     constructor(_name: string, _sex: string, _age: string,
       _lat: number, _lng: number, _symptoms: string){
-        this.name = _name;
-        this.sex = _sex;
-        this.age = _age;
-        this.lat = _lat;
-        this.lng = _lng;
-        this.symptoms = _symptoms;
+        this.Name = _name;
+        this.Sex = _sex;
+        this.Age = _age;
+        this.Lat = _lat;
+        this.Lng = _lng;
+        this.Symptoms = _symptoms;
     }
 }
 
