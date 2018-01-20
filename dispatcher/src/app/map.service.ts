@@ -18,9 +18,10 @@ export class MapService {
 
   /*
   * Get emergency address from 911 call, and send emergency to dispatchers through api
+  * Return responder
   */
-  startEmergency(): void {
-
-  }
+  // startEmergency(): Promise<Responder> {
+  //
+  // }
 
 }
