@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import { AgmCoreModule } from '@agm/core';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [

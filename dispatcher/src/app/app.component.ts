@@ -9,4 +9,7 @@ export class AppComponent {
   title: string = 'Doctors within Borders';
   lat: number = 51.678418;
   lng: number = 7.809007;
+  sex = ['Female', 'Male'];
+  submitted = false;
+  onSubmit() { this.submitted = true; }
 }
