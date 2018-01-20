@@ -12,9 +12,8 @@ import { OneString } from './classes';
 
 @Injectable()
 export class MapService {
-  constructor(
-    private http: Http
-  ) { }
+
+  constructor(private http: Http) {}
 
   getResponders(): Responder[] {
     return RESPONDERS;
