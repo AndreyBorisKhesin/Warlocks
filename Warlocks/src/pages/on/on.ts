@@ -29,12 +29,16 @@ export class OnPage {
 		this.navCtrl.push(OffPage);
 	}
 
-	map(lat: number, lon: number) {
+	map(args: any) {
 		this.navCtrl.push(GoPage, {
 			alat: this.alat,
 			alon: this.alon,
-			blat: lat,
-			blon: lon
+			blat: args['lat'],
+			blon: args['lng'],
+            name: args['name'],
+            sex: args['sex'],
+            age: args['age'],
+            symptoms: args['symptoms']
 		});
 	}
 
@@ -44,7 +48,7 @@ export class OnPage {
 			navigator.geolocation.getCurrentPosition((position) => {
 				this.alat = position.coords.latitude;
 				this.alon = position.coords.longitude;
-	
+
 				this.http.post('https://8ef33887.ngrok.io/polling', {
 					'lat': this.alat,
 					'lng': this.alon,
@@ -52,7 +56,7 @@ export class OnPage {
 				}).toPromise().then(data => {
 					if (data.json()['em']) {
 						this.accepted = true;
-						this.map(43.6705053, -79.3978192);//data.json()['lat'], data.json()['lng']);
+						this.map(data.json());
 					}
 				}).catch(error => {
 					console.error('An error occurred in onPage', error);

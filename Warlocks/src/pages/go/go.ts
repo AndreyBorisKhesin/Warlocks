@@ -30,7 +30,11 @@ export class GoPage {
 	map: any;
 	directionsService: any;
 	directionsDisplay: any;
-	
+    name: string;
+    age: string;
+    sex: string;
+    symptoms: string;
+
 	constructor(navParams: NavParams, public navCtrl: NavController) {
 		this.alat = navParams.get('alat');
 		this.alon = navParams.get('alon');
@@ -39,12 +43,16 @@ export class GoPage {
 		this.loc = new google.maps.LatLng(this.alat, this.alon);
 		this.dest = new google.maps.LatLng(this.blat, this.blon);
 		this.directionsService = new google.maps.DirectionsService();
+        this.name = navParams.get('name');
+        this.age = navParams.get('age');
+        this.sex = navParams.get('sex');
+        this.symptoms = navParams.get('symptoms');
 	}
 
 	back() {
 		this.navCtrl.push(OnPage);
 	}
-	
+
 	ionViewDidLoad(){
 		this.initialize(function(loc: any, dest: any, directionsDisplay: any, directionsService: any, map: any, callback) {
 			let request = {
@@ -60,7 +68,7 @@ export class GoPage {
 			callback(map);
 		});
 	}
- 
+
 	initialize(callback) {
 		this.directionsDisplay = new google.maps.DirectionsRenderer();
 		let mapOptions = {
