@@ -69,3 +69,9 @@ def poll():
 		return jsonify({
 			'em': go,
 		})
+
+@app.route('/accepted', methods = ['POST'])
+def acceptedEmergency():
+    # Emergency has been accepted
+    global go
+    go = False
