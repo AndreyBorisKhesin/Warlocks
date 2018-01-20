@@ -8,7 +8,6 @@ import { OnPage } from '../on/on';
 	templateUrl: 'home.html'
 })
 export class HomePage {
-
 	constructor(public navCtrl: NavController) {
 
 	}
@@ -16,5 +15,4 @@ export class HomePage {
 	go() {
 		this.navCtrl.push(OnPage);
 	}
-
 }

@@ -6,7 +6,6 @@ import { NavController } from 'ionic-angular';
 	templateUrl: 'off.html'
 })
 export class OffPage {
-
 	constructor(public navCtrl: NavController) {
 
 	}
@@ -14,5 +13,4 @@ export class OffPage {
 	switch() {
 		this.navCtrl.pop();
 	}
-
 }
