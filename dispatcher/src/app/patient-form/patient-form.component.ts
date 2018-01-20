@@ -10,7 +10,6 @@ import { ShareFormService } from '../share-form.service';
 })
 export class PatientFormComponent implements OnInit {
   sex = ['Female', 'Male'];
-  submitted = false;
 
   model = new Emergency('', '', '', 43.6595053, -79.3978192, '');
 

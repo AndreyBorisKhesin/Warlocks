@@ -15,6 +15,7 @@
   width: 64px;
   height: 64px;
   background: #555;
+  vertical-align: middle;
 }
 
 .header h1 {
@@ -29,6 +30,7 @@
   line-height: 16pt;
   position: relative;
   margin-bottom: 30px;
+  vertical-align: middle;
 }
 
 .thickness {
