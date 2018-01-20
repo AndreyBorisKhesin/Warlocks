@@ -5,17 +5,17 @@
     [longitude]="lng"
     [zoom]="zoom">
     <agm-marker
-        *ngFor="let m of markers; let i = index"
-        [latitude]="m.lat"
-        [longitude]="m.lng"
-        [label]="m.label">
+        *ngFor="let r of responders; let i = index"
+        [latitude]="r.lat"
+        [longitude]="r.lng"
+        [label]="r.name">
 
       <agm-info-window>
-        <strong>{{responders[i].name}} #{{responders[i].id}}</strong>
+        <strong>{{r.name}} #{{r.id}}</strong>
         <ul>
-            <li *ngFor="let s of responders[i].skills">{{s}}</li>
+            <li *ngFor="let s of r.skills">{{s}}</li>
         </ul>
-        <input type="button" value="Dispatch" (click)="dispatch(responders[i].id)"/>
+        <input type="button" value="Dispatch" (click)="dispatch(r.id)"/>
       </agm-info-window>
 
     </agm-marker>

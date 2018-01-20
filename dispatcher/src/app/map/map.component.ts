@@ -13,13 +13,11 @@ export class MapComponent implements OnInit {
     lat: number = 43.6595053;
     lng: number = -79.3978192;
     zoom: number = 13;
-    markers: Marker[];
     responders: Responder[];
 
     constructor(private mapService: MapService) { }
 
     ngOnInit() {
-        this.markers = this.mapService.getMarkers();
         this.responders = this.mapService.getResponders();
     }
 
@@ -31,10 +29,4 @@ export class MapComponent implements OnInit {
         let em = new Emergency("Andrey Khesin", "male", 19, "40 St George St, Toronto, ON M5S 2E4", "missing eyeball");
         return em;
     }
-}
-
-export interface Marker {
-  lat: number;
-  lng: number;
-  label: string;
 }
