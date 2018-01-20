@@ -2,6 +2,9 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+em = {}
+doctors = {} # Each doctor is identified by id; paired with curred location
+
 @app.route('/', methods = ['POST'])
 def root():
 	#do stuff with request.header style variables
@@ -9,12 +12,24 @@ def root():
 
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():
-	head = request.values.get('Name', None)
-	if head == None:
-		return "Need to provide header!"
+	em = {}
+	em['name'] = request.values.get('Name', None)
+	em['sex'] = request.values.get('Sex', None)
+	em['age'] = request.values.get('Age', None)
+	em['location'] = request.values.get('Location', None)
+	em['lat'] = request.values.get('Lat', None)
+	em['lng'] = request.values.get('Lng', None)
+	em['symptoms'] = request.values.get('symptoms', None)
+	if em['lat'] == None or em['lng'] == none:
+		return "Need to provide latitude and longitude!"
 	else:
-		return head
+		broadcast()
+
+def broadcast():
+	# Broadcast current emergency to the two closest doctors
+	pass
 
 @app.route('/polling', methods = ['POST'])
 def poll():
+	# Doctor, identified by id, sending in current location
 	return "Polling now"
