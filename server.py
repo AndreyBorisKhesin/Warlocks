@@ -5,27 +5,33 @@ import json
 app = Flask(__name__)
 CORS(app)
 
-global em = {} # the current emergency
-global go = False
+global em
+em = {} # the current emergency
+global go
+go = False
 doctors = {} # Each doctor is identified by id; paired with curred location
-doctor1 = {
+doctor0 = {
 	'id': '342d',
 	'name': 'Mister Doctor',
-	'skills': ['First aid', 'CPR'],
+	'skills': 2,
 	'lat': 43.6685586,
 	'lng': -79.3979803
 }
-doctor2 = {
+doctor1 = {
 	'id': '168a',
 	'name': 'Doctor Doom',
-	'skills': ['First aid'],
+	'skills': 1,
 	'lat': 43.6694453,
 	'lng': -79.3954161
 }
+doctors[0] = doctor0
 doctors[1] = doctor1
-doctors[2] = doctor2
+candidate = -1
+accepted = False
+potential_doctors = {}
 
-global closest = {} # the closest potential responder to em
+global closest
+closest = {} # the closest potential responder to em
 # need separate variables for dispatched and accpeted?
 
 @app.route('/', methods = ['POST'])
@@ -46,7 +52,7 @@ def startEmergency():
 	em['name'] = store['Name']
 	em['sex'] = store['Sex']
 	em['age'] = store['Age']
-	#em['location'] = store['Location']
+	em['skills'] = store['Skills']
 	em['lat'] = store['Lat']
 	em['lng'] = store['Lng']
 	em['symptoms'] = store['Symptoms']
@@ -58,21 +64,41 @@ def startEmergency():
 @app.route('/polling', methods = ['POST'])
 def poll():
 	# Doctor, identified by id, sending in current location
-	if go:
-		return jsonify(em) # broadcast current emergency if go
-	else:
-		return jsonify({
-			'em': go,
-		})
+	global em
+	global go
+	global doctors
+	data = request.data.decode('utf-8')
+	info = json.loads(data)
+	for i in range(len(doctors)):
+		if doctors[i]['id'] == info['id']:
+			doctors[i]['lat'] = info['lat']
+			doctors[i]['lng'] = info['lng']
+		if (go and candidate == i
+			and em['skills'] <= doctors[i]['skills']):
+			return jsonify(em)
+		else:
+			return jsonify({
+				'em': go,
+			})
 		
 @app.route('/closest', methods = ['POST'])
-def getClosest():
+def closest():
+	global candidate
+	global accepted
+	global potential_doctors
 	data = request.data.decode('utf-8')
-	store = json.loads(data)
-	# set closest to the data, somehow
+	potential_doctors = json.loads(data)
+	accepted = False
+	candidate = 0
 
-@app.route('/accepted', methods = ['POST'])
-def acceptedEmergency():
-    # Emergency has been accepted
-    global go
-    go = False
+@app.route('/polling/accept', methods = ['POST'])
+def reply():
+	global candidate
+	global em
+	data = request.data.decode('utf-8')
+	info = json.loads(data)
+	accepted = info['go']
+	if not accepted:
+		candidate = (candidate + 1) % len(doctors)
+		while doctors[candidate]['skills'] < em['skills']:
+			candidate = (candidate + 1) % len(doctors)
