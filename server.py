@@ -92,15 +92,22 @@ def reply():
 	global candidate
 	global em
 	global doctors
+	global potential_doctors
 	data = request.data.decode('utf-8')
 	info = json.loads(data)
 	accepted = info['go']
 	if not accepted:
-		candidate = (candidate + 1) % len(doctors)
-		while potential_doctors[candidate]['skills'] < em['Skills']:
+		add = True
+		while add:
 			candidate = (candidate + 1) % len(doctors)
+			for i in range(len(doctors)):
+				if (potential_doctors[candidate]['id'] ==
+					doctors[i]['id']):
+					add = (doctors[i]['skills']
+						< em['skills'])
 		return jsonify({
 			'null': 0
 		})
 	else:
+		go = False
 		return jsonify(em)
