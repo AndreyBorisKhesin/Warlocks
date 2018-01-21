@@ -79,7 +79,7 @@ export class MapComponent implements OnInit {
         console.log("gotResponders = " + this.gotResponders);
 
         // then we start polling the server for info on the dispatched doctor
-        
+
       }
     )
   }

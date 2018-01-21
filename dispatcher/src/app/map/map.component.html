@@ -12,12 +12,12 @@
     </agm-marker>
   </div>
 
-  <agm-marker [latitude]="emergency.Lat" [longitude]="emergency.Lng" [label]="" [iconUrl]="getEmergencyIcon(emergency)" (markerClick)="emergencyClick(emergency); gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+  <agm-marker [latitude]="emergency.Lat" [longitude]="emergency.Lng" [label]="" [iconUrl]="getEmergencyIcon(emergency)" (markerClick)="emergencyClick(getEmergency()); gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
     <agm-info-window #infoWindow>
-      <strong>Name: </strong>{{emergency.name}}<br/>
-      <strong>Sex: </strong>{{emergency.sex}}<br/>
-      <strong>Age: </strong>{{emergency.age}}<br/>
+      <strong>Name: </strong>{{emergency.Name}}<br/>
+      <strong>Sex: </strong>{{emergency.Sex}}<br/>
+      <strong>Age: </strong>{{emergency.Age}}<br/>
       <strong>Symptoms: </strong>
       <p>{{emergency.symptoms}}</p>
     </agm-info-window>
