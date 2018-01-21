@@ -74,7 +74,8 @@ export class OnPage {
 			name: args['name'],
 			sex: args['sex'],
 			age: args['age'],
-			symptoms: args['symptoms']
+			symptoms: args['symptoms'],
+			id: this.id
 		});
 	}
 
