@@ -60,7 +60,7 @@ export class MapService {
     let options = new RequestOptions({ headers: headers });
     this.http.post(url, JSON.stringify(Sorted), options)
       .toPromise()
-      .then(response => {});
+      .then(response => {console.log("Closest received")});
   }
 
   private handleError(error: any): Promise<any> {

@@ -76,7 +76,7 @@ export class MapComponent implements OnInit {
         console.log("Closest responder: " + closest[0]['id'] + ", " +
           closest[0]['dist'] + " meters");
         // send closest responders to server
-        this.mapService.SendClosestResponders(closest); 
+        this.mapService.SendClosestResponders(closest);
       }
     )
   }
@@ -105,16 +105,17 @@ export class MapComponent implements OnInit {
     while (j < this.responders.length) {
       console.log("Start while");
       let min = 100000;
-      for (let k of keys) {
-        if (min > dict[k]) {
-          min = dict[k];
-          sorted[j] = k;
-          let index = keys.indexOf(k, 0);
-          if (index > -1) {
-            keys.splice(index, 1);
-          }
-          min = 100000;
+      let k;
+      for (let ke of keys) {
+        if (min > dict[ke]) {
+          min = dict[ke];
+          k = ke
         }
+      }
+      sorted[j] = k;
+      let index = keys.indexOf(k, 0);
+      if (index > -1) {
+        keys.splice(index, 1);
       }
       j = j + 1;
     }
@@ -124,9 +125,9 @@ export class MapComponent implements OnInit {
 
     j = 0;
     let ret = [];
-    while(j < sorted.length){
+    while (j < sorted.length) {
       console.log("s: " + sorted[j]);
-      ret[j] = {"id": sorted[j], "dist": dict[sorted[j]]};
+      ret[j] = { "id": sorted[j], "dist": Math.round(dict[sorted[j]]) };
       j += 1;
     }
 
