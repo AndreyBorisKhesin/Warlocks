@@ -23,11 +23,11 @@ def root():
 
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():
-	print request.data
+	print(request.data)
 	store = json.loads(request.data)
-	print store
-	print store['Lat']
-	print store['Lng']
+	print(store)
+	print(store['Lat'])
+	print(store['Lng'])
 	em = {}
 	em['name'] = store['Name']
 	em['sex'] = store['Sex']
