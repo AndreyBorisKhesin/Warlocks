@@ -6,4 +6,6 @@ Doctors Within Borders aims to get the closest responder within 5 minutes
 of the patient to arrive on scene so as to give the patient the help needed
 earlier.
 
+![Logo](dispatcher.png)
+
 Created by Asic Chen, Christine KC Cheng, Andrey Boris Khesin and Dmitry Ten.
