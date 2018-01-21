@@ -25,7 +25,7 @@ doctor1 = {
 doctors[0] = doctor0
 doctors[1] = doctor1
 candidate = -1
-accepted = False
+sent = False
 potential_doctors = {}
 
 @app.route('/', methods = ['POST'])
@@ -57,7 +57,7 @@ def poll():
 	global em
 	global go
 	global doctors
-	global accepted
+	global sent
 	global potential_doctors
 	data = request.data.decode('utf-8')
 	info = json.loads(data)
@@ -65,8 +65,9 @@ def poll():
 		if doctors[i]['id'] == info['id']:
 			doctors[i]['lat'] = info['lat']
 			doctors[i]['lng'] = info['lng']
-		if (go and not accepted and candidate >= 0
+		if (go and not sent and candidate >= 0
 			and potential_doctors[candidate]['id'] == info['id']):
+			sent = True
 			return jsonify({
 				'em': True,
 				'dist': potential_doctors[candidate]['dist']
@@ -92,15 +93,23 @@ def reply():
 	global candidate
 	global em
 	global doctors
+	global potential_doctors
+	global sent
+	global go
+	sent = False
 	data = request.data.decode('utf-8')
-	info = json.loads(data)
-	accepted = info['go']
-	if not accepted:
-		candidate = (candidate + 1) % len(doctors)
-		while potential_doctors[candidate]['skills'] < em['Skills']:
+	if not json.loads(data)['go']:
+		add = True
+		while add:
 			candidate = (candidate + 1) % len(doctors)
+			for i in range(len(doctors)):
+				if (potential_doctors[candidate]['id'] ==
+					doctors[i]['id']):
+					add = (doctors[i]['skills']
+						< em['skills'])
 		return jsonify({
 			'null': 0
 		})
 	else:
+		go = False
 		return jsonify(em)
