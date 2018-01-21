@@ -16,7 +16,10 @@ the patient to arrive on scene so as to give the patient the help needed earlier
 
 ### a. Web view: the dispatcher
 
+<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/dispatcher_doctors.png" width=75%> </p>
+
 The dispatcher takes down information about an ongoing emergency from a 911 call, and dispatches a Doctor with the help of our dashboard.
+The Doctors are sorted by relevant skill sets and closest distances to the site of the emergency.
 
 ### b. Mobile view: the Doctor
 
@@ -33,6 +36,9 @@ On-duty Doctors are notified whenever a new emergency occurs that is both within
 <p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/mobile-newem.png" width=30%> </p>
 
 <p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/mobile-path.png" width=30%> </p>
+
+If a Doctor agrees to help with an emergency, a path is automatically generated to navigate them to the site of the emergency.
+If a Doctor declines, the emergency invitation is passed on to the next closest Doctor.
 
 
 ## 3. The Technology
