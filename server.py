@@ -6,6 +6,7 @@ app = Flask(__name__)
 CORS(app)
 
 em = {}
+go = False
 doctors = {} # Each doctor is identified by id; paired with curred location
 doctor1 = {
 	'id': '342d',
@@ -31,13 +32,16 @@ def root():
 
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():
+	global em
+	global go
 	print(request.data)
 	data = request.data.decode('utf-8')
 	store = json.loads(data)
 	print(store)
 	print(store['Lat'])
 	print(store['Lng'])
-	em = {}
+	go = True
+	em['em'] = go
 	em['name'] = store['Name']
 	em['sex'] = store['Sex']
 	em['age'] = store['Age']
@@ -57,4 +61,11 @@ def broadcast():
 @app.route('/polling', methods = ['POST'])
 def poll():
 	# Doctor, identified by id, sending in current location
-	return "Polling now"
+	global em
+	global go
+	if go:
+		return jsonify(em)
+	else:
+		return jsonify({
+			'em': go,
+		})
