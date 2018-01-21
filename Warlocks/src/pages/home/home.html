@@ -8,7 +8,7 @@
 	</div>
 
 	<div style="vertical-align: middle; display: block;">
-		<input type="text" id="name" name="code" placeholder="Please enter your personalized code">
+		<input type="text" id="name" name="code" placeholder="Please enter your personalized code" [(ngModel)]='id'>
 		<button ion-button (click)='go()'>
 			Submit Code
 		</button>
