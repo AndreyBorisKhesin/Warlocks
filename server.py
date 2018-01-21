@@ -122,4 +122,4 @@ def dispatcherPoll():
 	if accepted:
 		return jsonify(potential_doctors[candidate])
 	else:
-		return jsonify({'dispatched': False})
+		return jsonify({'id': -1})
