@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Responder, Emergency, Doctor } from './classes';
+import { Responder, Emergency } from './classes';
 
 import { RESPONDERS } from './mock-responders';
 
@@ -23,7 +23,7 @@ export class MapService {
   * Get emergency address from 911 call, and send emergency to dispatchers through api
   * Return responder
   */
-  startEmergency(em: Emergency): Promise<Doctor> {
+  startEmergency(em: Emergency): Promise<Responder> {
     let url = `${environment.api}/emergency/start`;
     let headers = new Headers({
       'Content-Type': 'application/json',
@@ -34,8 +34,13 @@ export class MapService {
       .toPromise()
       .then(response => {
         console.log("in map service");
-        let doc = new Doctor(response.json()['id']);
-        console.log("doc['id'] = " + doc['id']);
+        let doc = new Responder(
+          response.json()['id'],
+          response.json()['name'],
+          response.json()['skills'],
+          response.json()['lat'],
+          response.json()['lng']
+        );
         return doc;
       })
       .catch(this.handleError);

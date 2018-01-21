@@ -6,20 +6,28 @@ app = Flask(__name__)
 CORS(app)
 
 em = {}
-doctors = {'id':'342d'} # Each doctor is identified by id; paired with curred location
+doctors = [] # Each doctor is identified by id; paired with curred location
+doctor1 = {
+	'id': '342d',
+	'name': 'Mister Doctor',
+	'skills': 'First aid',
+	'lat': 43.6955053,
+	'lng': -79.3978192
+}
+doctor2 = {
+	'id': '168a',
+	'name': 'Doctor Doom',
+	'skills': 'First aid',
+	'lat': 43.6995053,
+	'lng': -79.3678192
+}
+doctors.append(doctor1)
+doctors.append(doctor2)
 
 @app.route('/', methods = ['POST'])
 def root():
 	#do stuff with request.header style variables
 	return 'Borders Within Doctors - not haunted'
-
-# @app.route('/test1', methods = ['POST'])
-# def test1():
-# 	d = request.values.get('Age', None)
-# 	if d:
-# 		return d
-# 	else:
-# 		return "No age received"
 
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():

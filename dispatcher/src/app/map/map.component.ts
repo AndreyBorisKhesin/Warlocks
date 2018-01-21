@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MapService } from '../map.service';
 import { Responder } from '../classes';
-import { Emergency, Doctor } from '../classes';
+import { Emergency } from '../classes';
 import { ShareFormService } from '../share-form.service';
 
 @Component({
