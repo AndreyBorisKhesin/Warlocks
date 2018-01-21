@@ -3,7 +3,7 @@
 ### A crowdsourcing app that improves first response time to emergencies by connecting city 911 dispatchers with certified civilians
 
 <!-- ![Logo](dispatcher.png) -->
-<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks.git/dispatcher.png" width=75%> </p>
+<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/dispatcher.png" width=75%> </p>
 
 ## 1. The Challenge
 
