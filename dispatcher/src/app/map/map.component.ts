@@ -77,6 +77,9 @@ export class MapComponent implements OnInit {
         // send closest responders to server
         this.mapService.SendClosestResponders(closest);
         console.log("gotResponders = " + this.gotResponders);
+
+        // then we start polling the server for info on the dispatched doctor
+        
       }
     )
   }
