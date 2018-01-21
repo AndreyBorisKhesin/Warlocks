@@ -75,7 +75,8 @@ def poll():
 			doctors[i]['lat'] = info['lat']
 			doctors[i]['lng'] = info['lng']
 		if (go and not accepted #and candidate == i
-			and em['Skills'] <= doctors[i]['skills']):
+			and em['Skills'] <= doctors[i]['skills']
+            ):
 			return jsonify(em)
 		else:
 			return jsonify({
