@@ -1,3 +1,11 @@
 agm-map {
-  height: 575px;
+  height: 100%;
+}
+
+input {
+    border: none;
+    padding: 7px;
+    margin-top: 3px;
+    background-color: #a94442;
+    color: #ffffff;
 }

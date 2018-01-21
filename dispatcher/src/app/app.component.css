@@ -34,6 +34,13 @@
   vertical-align: middle;
 }
 
+.header {
+    height: 13%;
+}
+.row {
+    height:80%;
+}
+
 .thickness {
   display: inline-block;
   text-decoration: none;
