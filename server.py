@@ -5,8 +5,8 @@ import json
 app = Flask(__name__)
 CORS(app)
 
-em = {}
-go = False
+global em = {} # the current emergency
+global go = False
 doctors = {} # Each doctor is identified by id; paired with curred location
 doctor1 = {
 	'id': '342d',
@@ -25,6 +25,9 @@ doctor2 = {
 doctors[1] = doctor1
 doctors[2] = doctor2
 
+global closest = {} # the closest potential responder to em
+# need separate variables for dispatched and accpeted?
+
 @app.route('/', methods = ['POST'])
 def root():
 	#do stuff with request.header style variables
@@ -32,8 +35,6 @@ def root():
 
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():
-	global em
-	global go
 	print(request.data)
 	data = request.data.decode('utf-8')
 	store = json.loads(data)
@@ -54,18 +55,18 @@ def startEmergency():
 	else:
 		return jsonify(doctors)
 
-def broadcast():
-	# Broadcast current emergency to the two closest doctors
-	pass
-
 @app.route('/polling', methods = ['POST'])
 def poll():
 	# Doctor, identified by id, sending in current location
-	global em
-	global go
 	if go:
-		return jsonify(em)
+		return jsonify(em) # broadcast current emergency if go
 	else:
 		return jsonify({
 			'em': go,
 		})
+
+@app.route('/closest', methods = ['POST'])
+def getClosest():
+	data = request.data.decode('utf-8')
+	store = json.loads(data)
+	# set closest to the data, somehow

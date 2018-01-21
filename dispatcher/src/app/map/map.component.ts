@@ -69,12 +69,16 @@ export class MapComponent implements OnInit {
         this.responders = response;
         console.log(this.responders);
         this.gotResponders = true;
+
+        // find closest responder
+        let closest = this.findClosestResponder(em);
+        console.log(closest);
+        // console.log("Closest responder: " + closest['responder'].name + ", " +
+        //   closest['distance'] + " meters");
+        // send closest responders to server
+
       }
     )
-
-    let closest = this.findClosestResponder(em);
-    console.log("Closest responder: " + closest['responder'].name + ", " +
-      closest['distance'] + " meters");
   }
 
   calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number) {
@@ -84,16 +88,41 @@ export class MapComponent implements OnInit {
     return distance;
   }
 
-  findClosestResponder(emergency: Emergency) {
-    let minDistance = Infinity;
-    let closestResponder = null;
+  findClosestResponder(emergency: Emergency): {} {
+    let dict = {};
+    let keys = [];
+    let sorted = [];
+    let j = 0;
     for (let r of this.responders) {
-      let dist = this.calculateDistance(r.lat, r.lng, emergency.Lat, emergency.Lng);
-      if (dist < minDistance) {
-        minDistance = dist;
-        closestResponder = r;
-      }
+      dict[r.id] = this.calculateDistance(r.lat, r.lng, emergency.Lat, emergency.Lng);
+      keys[j] = r.id;
+      j = j + 1;
     }
-    return { 'responder': closestResponder, 'distance': minDistance };
+    console.log(dict);
+    j = 0;
+    while (j < this.responders.length) {
+      let min = 1000;
+      for (let k of keys) {
+        if (min > dict[k]) {
+          min = dict[k];
+          sorted[j] = k;
+          let index = keys.indexOf(k, 0);
+          if (index > -1) {
+            keys.splice(index, 1);
+          }
+        }
+      }
+      j = j + 1;
+    }
+    console.log(sorted);
+
+    j = 0;
+    let ret = [];
+    for(let s in sorted){
+      ret[j] = {"id": s, "dist": dict[s]};
+      j += 1;
+    }
+
+    return ret;
   }
 }
