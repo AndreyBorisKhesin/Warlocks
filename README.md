@@ -1,7 +1,6 @@
 ![Logo](mdf_logo.png)
 # Doctors Within Borders
-### A crowdsourcing app that improves first response time to emergencies
-by connecting city 911 dispatchers with certified civillians
+### A crowdsourcing app that improves first response time to emergencies by connecting city 911 dispatchers with certified civilians
 
 ![Logo](dispatcher.png)
 
@@ -14,6 +13,10 @@ Doctors Within Borders aims to get the closest responder within 5 minutes of
 the patient to arrive on scene so as to give the patient the help needed earlier.
 
 ## 2. Main Features
+
+### a. Web view: the dispatcher
+
+### b. Mobile view: the Doctor
 
 ## 3. The Technology
 
