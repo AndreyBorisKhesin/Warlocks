@@ -14,3 +14,34 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.header img {
+  float: left;
+  width: 36px;
+  height: 36px;
+  background: #555;
+  vertical-align: bottom;
+}
+
+.header h1 {
+  position: relative;
+  top: 4px;
+  left: 10px;
+  font-size: 12pt;
+  font-family: Arial;
+  font-style: italic;
+  font-weight: bold;
+  color: black;
+  line-height: 12pt;
+  position: relative;
+  margin-bottom: 30px;
+  vertical-align: top;
+}
+
+.thickness {
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: 1px solid red;
+  margin-bottom: 2px;
+}
+
