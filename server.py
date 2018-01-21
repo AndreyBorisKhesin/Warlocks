@@ -6,10 +6,10 @@ app = Flask(__name__)
 CORS(app)
 
 global em
-em = {} # the current emergency
+em = {}
 global go
 go = False
-doctors = {} # Each doctor is identified by id; paired with curred location
+doctors = {}
 doctor0 = {
 	'id': '342d',
 	'name': 'Mister Doctor',
@@ -30,23 +30,15 @@ candidate = -1
 accepted = False
 potential_doctors = doctors
 
-global closest
-closest = {} # the closest potential responder to em
-# need separate variables for dispatched and accpeted?
-
 @app.route('/', methods = ['POST'])
 def root():
-	#do stuff with request.header style variables
-	return 'Borders Within Doctors - not haunted'
+	return 'Doctors Within Borders'
 
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():
 	print(request.data)
 	data = request.data.decode('utf-8')
 	store = json.loads(data)
-	print(store)
-	print(store['Lat'])
-	print(store['Lng'])
 	go = True
 	em['em'] = go
 	em['name'] = store['Name']
@@ -63,7 +55,6 @@ def startEmergency():
 
 @app.route('/polling', methods = ['POST'])
 def poll():
-	# Doctor, identified by id, sending in current location
 	global em
 	global go
 	global doctors
@@ -74,9 +65,7 @@ def poll():
 		if doctors[i]['id'] == info['id']:
 			doctors[i]['lat'] = info['lat']
 			doctors[i]['lng'] = info['lng']
-		if (go and not accepted #and candidate == i
-			and em['Skills'] <= doctors[i]['skills']
-            ):
+		if (go and not accepted and candidate == i):
 			return jsonify(em)
 		else:
 			return jsonify({
@@ -92,6 +81,7 @@ def closest():
 	potential_doctors = json.loads(data)
 	accepted = False
 	candidate = 0
+	return "true"
 
 @app.route('/polling/accept', methods = ['POST'])
 def reply():
@@ -102,5 +92,8 @@ def reply():
 	accepted = info['go']
 	if not accepted:
 		candidate = (candidate + 1) % len(doctors)
-		while doctors[candidate]['skills'] < em['skills']:
+		while potential_doctors[candidate]['skills'] < em['skills']:
 			candidate = (candidate + 1) % len(doctors)
+		return 0
+	else:
+		return em
