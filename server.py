@@ -120,6 +120,6 @@ def dispatcherPoll():
 	global accepted
 	global potential_doctors
 	if accepted:
-		pass
+		return jsonify(potential_doctors[candidate])
 	else:
 		return jsonify({'dispatched': False})
