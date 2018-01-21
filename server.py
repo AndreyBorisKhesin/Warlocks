@@ -21,8 +21,8 @@ doctor2 = {
 	'lat': 43.6995053,
 	'lng': -79.3678192
 }
-doctors.set(1, doctor1)
-doctors.set(2, doctor2)
+doctors[1] = doctor1
+doctors[2] = doctor2
 
 @app.route('/', methods = ['POST'])
 def root():
