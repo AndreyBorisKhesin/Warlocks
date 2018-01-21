@@ -76,7 +76,9 @@ export class MapService {
     .toPromise()
     .then( response => {
       console.log("in map service, dispatched id is " + response.json()['id']);
-      return response.json()['id'];
+      console.log(response.json());
+      let ret = response.json()['id'];
+      return ret;
     });
 
   }

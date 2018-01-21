@@ -97,6 +97,7 @@ def reply():
 	global potential_doctors
 	global sent
 	global go
+	global accepted
 	sent = False
 	data = request.data.decode('utf-8')
 	if not json.loads(data)['go']:
