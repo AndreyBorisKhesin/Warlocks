@@ -22,8 +22,28 @@ doctor1 = {
 	'lat': 43.6694453,
 	'lng': -79.3954161
 }
+doctor2 = {'lat': 43.65094961889173, 'skills': 0, 'lng': -79.39703196325094, 'id': '452o', 'name': 'Doctor Evil'}
+doctor3 = {'lat': 43.65516161682753, 'skills': 1, 'lng': -79.3924189847472, 'id': '823a', 'name': 'Doctor Horrible'}
+doctor4 = {'lat': 43.66363759158889, 'skills': 2, 'lng': -79.39765493528914, 'id': '487b', 'name': 'Doctor Strange'}
+doctor5 = {'lat': 43.66198647634404, 'skills': 0, 'lng': -79.39198662899763, 'id': '158a', 'name': 'Doctor Strangelove'}
+doctor6 = {'lat': 43.6607119821097, 'skills': 1, 'lng': -79.39467459413295, 'id': '737u', 'name': 'Doctor Manhattan'}
+doctor7 = {'lat': 43.65302783836468, 'skills': 2, 'lng': -79.3946860215969, 'id': '368p', 'name': 'Doctor Nefario'}
+doctor8 = {'lat': 43.66695682388216, 'skills': 0, 'lng': -79.3993502608853, 'id': '200o', 'name': 'Doctor Banting'}
+doctor9 = {'lat': 43.65874193268959, 'skills': 2, 'lng': -79.39484999517022, 'id': '240b', 'name': 'Doctor Best'}
+doctor10 = {'lat': 43.654367255189904, 'skills': 0, 'lng': -79.40155480000719, 'id': '775g', 'name': 'Doctor Jekyll'}
+doctor11 = {'lat': 43.652360369226145, 'skills': 1, 'lng': -79.38254437566081, 'id': '426b', 'name': 'Doctor Frankenstein'}
 doctors[0] = doctor0
 doctors[1] = doctor1
+doctors[2] = doctor2
+doctors[3] = doctor3
+doctors[4] = doctor4
+doctors[5] = doctor5
+doctors[6] = doctor6
+doctors[7] = doctor7
+doctors[8] = doctor8
+doctors[9] = doctor9
+doctors[10] = doctor10
+doctors[11] = doctor11
 candidate = -1
 sent = False
 accepted = False
