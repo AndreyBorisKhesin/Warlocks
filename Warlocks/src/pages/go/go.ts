@@ -32,8 +32,10 @@ export class GoPage {
 	directionsDisplay: any;
 	
 	constructor(navParams: NavParams, public navCtrl: NavController) {
-		this.blat = navParams.get('lat');
-		this.blon = navParams.get('lon');
+		this.alat = navParams.get('alat');
+		this.alon = navParams.get('alon');
+		this.blat = navParams.get('blat');
+		this.blon = navParams.get('blon');
 		this.dest = new google.maps.LatLng(this.blat, this.blon);
 		this.directionsService = new google.maps.DirectionsService();
 	}
@@ -43,25 +45,19 @@ export class GoPage {
 	}
 	
 	ionViewDidLoad(){
-		let locationOptions = {timeout: 20000, enableHighAccuracy: true};
-		navigator.geolocation.getCurrentPosition((position) => {
-			this.alat = position.coords.latitude;
-			this.alon = position.coords.longitude;
-			this.loc = new google.maps.LatLng(this.alat, this.alon);
-			this.initialize(function(loc: any, dest: any, directionsDisplay: any, directionsService: any, map: any, callback) {
-				let request = {
-					origin: loc,
-					destination: dest,
-					travelMode: 'WALKING'
-				};
-				directionsService.route(request, function(result, status) {
-					if (status == 'OK') {
-						directionsDisplay.setDirections(result);
-					}
-				});
-				callback(map);
+		this.initialize(function(loc: any, dest: any, directionsDisplay: any, directionsService: any, map: any, callback) {
+			let request = {
+				origin: loc,
+				destination: dest,
+				travelMode: 'WALKING'
+			};
+			directionsService.route(request, function(result, status) {
+				if (status == 'OK') {
+					directionsDisplay.setDirections(result);
+				}
 			});
-		}, (err) => {}, locationOptions);
+			callback(map);
+		});
 	}
  
 	initialize(callback) {
