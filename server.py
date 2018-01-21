@@ -101,3 +101,13 @@ def reply():
 		return jsonify({})
 	else:
 		return jsonify(em)
+
+@app.route('/dispatcherpoll', methods = ['POST'])
+def dispatcherPoll():
+	global candidate
+	global accepted
+	global potential_doctors
+	if accepted:
+		pass
+	else:
+		return jsonify({'dispatched': False})
