@@ -11,6 +11,7 @@ import { GoPage } from '../go/go';
 })
 export class OnPage {
 	id: any;
+	name: any;
 	task: any;
 	accepted: Boolean;
 	alat: number;
@@ -21,6 +22,8 @@ export class OnPage {
 		public alertCtrl: AlertController, navParams: NavParams) {
 		this.accepted = false;
 		this.id = navParams.get('id');
+		this.name = navParams.get('name');
+		console.log(this.name)
 	}
 
 	ionViewDidLoad() {
@@ -30,7 +33,7 @@ export class OnPage {
 	}
 
 	switch() {
-		this.navCtrl.push(OffPage);
+		this.navCtrl.push(OffPage, {'name': this.name});
 	}
 
 	showConfirm(distance: number) {
