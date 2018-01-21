@@ -1,8 +1,7 @@
 .map-column {
   float: left;
   width: 75%;
-  margin-left: 20px;
-  height: auto;
+  margin-left: 25px;
 }
 
 .form-column {
@@ -12,6 +11,7 @@
 }
 
 .header img {
+  margin-left: 5px;
   float: left;
   width: 64px;
   height: 64px;

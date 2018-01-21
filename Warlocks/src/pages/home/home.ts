@@ -8,13 +8,17 @@ import { OnPage } from '../on/on';
 	templateUrl: 'home.html'
 })
 export class HomePage {
+	code = {
+		id: ''
+	}
+
 	constructor(public navCtrl: NavController) {
 
 	}
 
 	go() {
 		this.navCtrl.push(OnPage, {
-			'id': this.id
+			'id': this.code.id
 		});
 	}
 }
