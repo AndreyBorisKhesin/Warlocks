@@ -52,8 +52,15 @@ export class MapService {
   /*
   * Send the list of Ids in sorted order, closest to em first
   */
-  SendClosestResponders(Sorted: string[]) {
-
+  SendClosestResponders(Sorted: {}): void {
+    let url = `${environment.api}/closest`;
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+    });
+    let options = new RequestOptions({ headers: headers });
+    this.http.post(url, JSON.stringify(Sorted), options)
+      .toPromise()
+      .then(response => {});
   }
 
   private handleError(error: any): Promise<any> {
