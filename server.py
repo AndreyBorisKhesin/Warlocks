@@ -28,7 +28,7 @@ doctors[0] = doctor0
 doctors[1] = doctor1
 candidate = -1
 accepted = False
-potential_doctors = {}
+potential_doctors = doctors
 
 global closest
 closest = {} # the closest potential responder to em
@@ -74,14 +74,14 @@ def poll():
 		if doctors[i]['id'] == info['id']:
 			doctors[i]['lat'] = info['lat']
 			doctors[i]['lng'] = info['lng']
-		if (go and not accepted and candidate == i
+		if (go and not accepted #and candidate == i
 			and em['Skills'] <= doctors[i]['skills']):
 			return jsonify(em)
 		else:
 			return jsonify({
 				'em': go,
 			})
-		
+
 @app.route('/closest', methods = ['POST'])
 def closest():
 	global candidate
