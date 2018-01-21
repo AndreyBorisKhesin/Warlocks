@@ -98,9 +98,7 @@ export class MapComponent implements OnInit {
       keys[j] = r.id;
       j = j + 1;
     }
-    console.log("Dict:");
-    console.log(dict);
-    console.log(this.responders.length);
+
     j = 0;
     while (j < this.responders.length) {
       console.log("Start while");
@@ -119,9 +117,6 @@ export class MapComponent implements OnInit {
       }
       j = j + 1;
     }
-    console.log("Sorted: ");
-    console.log(sorted);
-    console.log(sorted.length);
 
     j = 0;
     let ret = [];
