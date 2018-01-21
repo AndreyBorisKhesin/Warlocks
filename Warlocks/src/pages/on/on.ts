@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController, NavController } from 'ionic-angular';
+import { AlertController, NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 import { OffPage } from '../off/off';
@@ -10,6 +10,7 @@ import { GoPage } from '../go/go';
 	templateUrl: 'on.html'
 })
 export class OnPage {
+	id: any;
 	task: any;
 	accepted: Boolean;
 	alat: number;
@@ -17,8 +18,9 @@ export class OnPage {
 	confirm: any;
 
 	constructor(private http: Http, public navCtrl: NavController,
-		public alertCtrl: AlertController) {
+		public alertCtrl: AlertController, navParams: NavParams) {
 		this.accepted = false;
+		this.id = navParams.get('id');
 	}
 
 	ionViewDidLoad() {
@@ -87,7 +89,7 @@ export class OnPage {
 				this.http.post('https://8ef33887.ngrok.io/polling', {
 					'lat': this.alat,
 					'lng': this.alon,
-					'id': '168a'
+					'id': this.id
 				}).toPromise().then(data => {
 					if (data.json()['em']) {
 						this.showConfirm(data.json()['dist'])

@@ -50,7 +50,7 @@ export class GoPage {
 	}
 
 	back() {
-		this.navCtrl.push(OnPage);
+		this.navCtrl.pop();
 	}
 
 	ionViewDidLoad(){

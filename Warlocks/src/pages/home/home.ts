@@ -13,6 +13,8 @@ export class HomePage {
 	}
 
 	go() {
-		this.navCtrl.push(OnPage);
+		this.navCtrl.push(OnPage, {
+			'id': this.id
+		});
 	}
 }
