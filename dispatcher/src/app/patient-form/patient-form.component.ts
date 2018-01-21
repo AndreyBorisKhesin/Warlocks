@@ -14,9 +14,6 @@ export class PatientFormComponent implements OnInit {
 
   model = new Emergency('', '', '', 43.6705053, -79.3978192, '', 1);
 
-  // For testing
-  get currentEmergency() { return JSON.stringify(this.model); }
-
   public constructor(
     private shareFormService: ShareFormService,
     private mapComp: MapComponent
@@ -26,11 +23,4 @@ export class PatientFormComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  newEmergency() {
-    console.log(this.model.Name);
-    this.mapComp.mapStartEmergency(this.model);
-    // return this.model;
-  }
-
 }
