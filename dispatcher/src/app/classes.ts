@@ -4,6 +4,14 @@ export class Responder {
     skills: string[];
     lat: number;
     lng: number;
+
+    constructor(_id: string, _name: string, _skills: string[], _lat: number, _lng: number) {
+        this.id = _id;
+        this.name = _name;
+        this.skills = _skills;
+        this.lat = _lat;
+        this.lng = _lng;
+    }
 }
 
 export class Emergency {
@@ -27,12 +35,4 @@ export class Emergency {
 
 export class OneString {
     s: string;
-}
-
-export class Doctor {
-    id: string;
-
-    constructor(_id: string) {
-      this.id = _id;
-    }
 }
