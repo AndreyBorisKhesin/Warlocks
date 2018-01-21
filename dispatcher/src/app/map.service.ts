@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Responder, Emergency } from './classes';
 
-import { RESPONDERS } from './mock-responders';
-
 import 'rxjs/add/operator/toPromise';
 
 import { environment } from '../environments/environment';
@@ -21,7 +19,7 @@ export class MapService {
 
   /*
   * Get emergency address from 911 call, and send emergency to dispatchers through api
-  * Return responder
+  * Return all responders that are on duty
   */
   startEmergency(em: Emergency): Promise<Responder[]> {
     let url = `${environment.api}/emergency/start`;
@@ -38,17 +36,31 @@ export class MapService {
         let len = Object.keys(response.json()).length;
         for (let i = 0; i < len; i++) {
           let doc = new Responder(
-            response.json()[i+1]['id'],
-            response.json()[i+1]['name'],
-            response.json()[i+1]['skills'],
-            response.json()[i+1]['lat'],
-            response.json()[i+1]['lng']
+            response.json()[i]['id'],
+            response.json()[i]['name'],
+            response.json()[i]['skills'],
+            response.json()[i]['lat'],
+            response.json()[i]['lng']
           );
           doctors[i] = doc;
         }
         return doctors;
       })
       .catch(this.handleError);
+  }
+
+  /*
+  * Send the list of Ids in sorted order, closest to em first
+  */
+  SendClosestResponders(Sorted: {}): void {
+    let url = `${environment.api}/closest`;
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+    });
+    let options = new RequestOptions({ headers: headers });
+    this.http.post(url, JSON.stringify(Sorted), options)
+      .toPromise()
+      .then(response => {console.log("Closest received")});
   }
 
   private handleError(error: any): Promise<any> {

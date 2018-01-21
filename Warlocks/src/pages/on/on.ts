@@ -14,6 +14,7 @@ export class OnPage {
 	accepted: Boolean;
 	alat: number;
 	alon: number;
+	confirm: any;
 
 	constructor(private http: Http, public navCtrl: NavController) {
 		this.accepted = false;
@@ -29,12 +30,50 @@ export class OnPage {
 		this.navCtrl.push(OffPage);
 	}
 
-	map(lat: number, lon: number) {
+	showConfirm(distance: number) {
+		this.confirm = this.alertCtrl.create({
+			title: 'Accept New Emergency?',
+			message: 'A civilian ' + distance + ' metres away needs help! Do you agree to help them?',
+			buttons: [{
+				text: 'No',
+				handler: () => {
+					this.http.post('https://8ef33887.ngrok.io/polling/accept', {
+						'go': false,
+					}).toPromise().then(data => {}).catch(error => {
+						console.error('An error occurred in onPage', error);
+						return Promise.reject(error.message || error);
+					});
+					this.accepted = false;
+				}
+			}, {
+				text: 'Yes',
+				handler: () => {
+					this.accepted = true
+					this.http.post('https://8ef33887.ngrok.io/polling/accept', {
+						'go': true,
+					}).toPromise().then(data => {
+						map(data.json())
+					}).catch(error => {
+						console.error('An error occurred in onPage', error);
+						return Promise.reject(error.message || error);
+					});
+					this.map(data.json());
+				}
+			}]
+		});
+		this.confirm.present();
+	}
+
+	map(args: any) {
 		this.navCtrl.push(GoPage, {
 			alat: this.alat,
 			alon: this.alon,
-			blat: lat,
-			blon: lon
+			blat: args['lat'],
+			blon: args['lng'],
+			name: args['name'],
+			sex: args['sex'],
+			age: args['age'],
+			symptoms: args['symptoms']
 		});
 	}
 
@@ -44,15 +83,15 @@ export class OnPage {
 			navigator.geolocation.getCurrentPosition((position) => {
 				this.alat = position.coords.latitude;
 				this.alon = position.coords.longitude;
-	
+
 				this.http.post('https://8ef33887.ngrok.io/polling', {
 					'lat': this.alat,
 					'lng': this.alon,
-					'id': '4913'
+					'id': '342d'
 				}).toPromise().then(data => {
 					if (data.json()['em']) {
 						this.accepted = true;
-						this.map(43.6705053, -79.3978192);//data.json()['lat'], data.json()['lng']);
+						showConfirm()
 					}
 				}).catch(error => {
 					console.error('An error occurred in onPage', error);

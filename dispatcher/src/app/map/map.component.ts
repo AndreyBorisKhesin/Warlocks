@@ -29,7 +29,6 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.responders = this.mapService.getResponders();
     this.gotResponders = false;
     this.responders = [];
     this.haveEmergency = true;
@@ -41,7 +40,7 @@ export class MapComponent implements OnInit {
 
   getResponderIcon(responder: Responder) {
     let path = '../../assets/';
-    switch (responder.skills.length) {
+    switch (responder.skills) {
       case 1:
         return path + 'cpr.png';
       case 2:
@@ -61,20 +60,25 @@ export class MapComponent implements OnInit {
     return '../../assets/emergency.png'
   }
 
-  mapStartEmergency(em: Emergency): void {
-
+  public mapStartEmergency(em: Emergency): void {
+    console.log(em);
     this.mapService.startEmergency(em).then(
       response => {
         console.log("in map component");
         this.responders = response;
         console.log(this.responders);
         this.gotResponders = true;
+
+        // find closest responder
+        let closest = this.findClosestResponder(em);
+        console.log(closest);
+        console.log("Closest responder: " + closest[0]['id'] + ", " +
+          closest[0]['dist'] + " meters");
+        // send closest responders to server
+        this.mapService.SendClosestResponders(closest);
+        console.log("gotResponders = " + this.gotResponders);
       }
     )
-
-    let closest = this.findClosestResponder(em);
-    console.log("Closest responder: " + closest['responder'].name + ", " +
-      closest['distance'] + " meters");
   }
 
   calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number) {
@@ -84,16 +88,44 @@ export class MapComponent implements OnInit {
     return distance;
   }
 
-  findClosestResponder(emergency: Emergency) {
-    let minDistance = Infinity;
-    let closestResponder = null;
+  findClosestResponder(emergency: Emergency): {} {
+    let dict = {};
+    let keys = [];
+    let sorted = [];
+    let j = 0;
     for (let r of this.responders) {
-      let dist = this.calculateDistance(r.lat, r.lng, emergency.Lat, emergency.Lng);
-      if (dist < minDistance) {
-        minDistance = dist;
-        closestResponder = r;
-      }
+      dict[r.id] = this.calculateDistance(r.lat, r.lng, emergency.Lat, emergency.Lng);
+      keys[j] = r.id;
+      j = j + 1;
     }
-    return { 'responder': closestResponder, 'distance': minDistance };
+
+    j = 0;
+    while (j < this.responders.length) {
+      console.log("Start while");
+      let min = 100000;
+      let k;
+      for (let ke of keys) {
+        if (min > dict[ke]) {
+          min = dict[ke];
+          k = ke
+        }
+      }
+      sorted[j] = k;
+      let index = keys.indexOf(k, 0);
+      if (index > -1) {
+        keys.splice(index, 1);
+      }
+      j = j + 1;
+    }
+
+    j = 0;
+    let ret = [];
+    while (j < sorted.length) {
+      console.log("s: " + sorted[j]);
+      ret[j] = { "id": sorted[j], "dist": Math.round(dict[sorted[j]]) };
+      j += 1;
+    }
+
+    return ret;
   }
 }
