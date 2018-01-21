@@ -67,14 +67,15 @@ def poll():
 	global em
 	global go
 	global doctors
+	global accepted
 	data = request.data.decode('utf-8')
 	info = json.loads(data)
 	for i in range(len(doctors)):
 		if doctors[i]['id'] == info['id']:
 			doctors[i]['lat'] = info['lat']
 			doctors[i]['lng'] = info['lng']
-		if (go and candidate == i
-			and em['skills'] <= doctors[i]['skills']):
+		if (go and not accepted and candidate == i
+			and em['Skills'] <= doctors[i]['skills']):
 			return jsonify(em)
 		else:
 			return jsonify({
