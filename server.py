@@ -5,30 +5,33 @@ import json
 app = Flask(__name__)
 CORS(app)
 
-global em = {} # the current emergency
-global go = False
+global em
+em = {} # the current emergency
+global go
+go = False
 doctors = {} # Each doctor is identified by id; paired with curred location
-doctor1 = {
+doctor0 = {
 	'id': '342d',
 	'name': 'Mister Doctor',
 	'skills': 2,
 	'lat': 43.6685586,
 	'lng': -79.3979803
 }
-doctor2 = {
+doctor1 = {
 	'id': '168a',
 	'name': 'Doctor Doom',
 	'skills': 1,
 	'lat': 43.6694453,
 	'lng': -79.3954161
 }
+doctors[0] = doctor0
 doctors[1] = doctor1
-doctors[2] = doctor2
 candidate = -1
 accepted = False
 potential_doctors = {}
 
-global closest = {} # the closest potential responder to em
+global closest
+closest = {} # the closest potential responder to em
 # need separate variables for dispatched and accpeted?
 
 @app.route('/', methods = ['POST'])
@@ -63,6 +66,7 @@ def poll():
 	# Doctor, identified by id, sending in current location
 	global em
 	global go
+	global doctors
 	data = request.data.decode('utf-8')
 	info = json.loads(data)
 	for i in range(len(doctors)):
@@ -96,5 +100,5 @@ def reply():
 	accepted = info['go']
 	if not accepted:
 		candidate = (candidate + 1) % len(doctors)
-		while doctors[candidate]['skills'] < em['skills']
+		while doctors[candidate]['skills'] < em['skills']:
 			candidate = (candidate + 1) % len(doctors)
