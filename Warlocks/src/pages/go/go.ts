@@ -12,6 +12,7 @@ import {
 } from '@ionic-native/google-maps';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { OnPage } from '../on/on';
 
 declare var google;
 
@@ -30,11 +31,15 @@ export class GoPage {
 	directionsService: any;
 	directionsDisplay: any;
 	
-	constructor(navParams: NavParams) {
+	constructor(navParams: NavParams, public navCtrl: NavController) {
 		this.blat = navParams.get('lat');
 		this.blon = navParams.get('lon');
 		this.dest = new google.maps.LatLng(this.blat, this.blon);
 		this.directionsService = new google.maps.DirectionsService();
+	}
+
+	back() {
+		this.navCtrl.push(OnPage);
 	}
 	
 	ionViewDidLoad(){
