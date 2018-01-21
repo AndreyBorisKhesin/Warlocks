@@ -28,7 +28,7 @@ export class GoPage {
 	directionsDisplay: any;
 	myloc: Marker;
 	
-	constructor(private platform: Platform, navParams: NavParams) {
+	constructor(navParams: NavParams) {
 		this.lat = navParams.get('lat');
 		this.lon = navParams.get('lon');
 		this.dest = new google.maps.LatLng(this.lat, this.lon);
@@ -36,15 +36,15 @@ export class GoPage {
 	}
 	
 	ionViewDidLoad(){
-		this.initialize(function() {
+		this.initialize(function(dest: any, directionsDisplay: any, directionsService: any) {
 			let request = {
 				origin: new google.maps.LatLng(43.658642, -79.3966635),
-				destination: new google.maps.LatLng(this.lat, this.lon),
+				destination: dest,
 				travelMode: 'WALKING'
 			};
-			this.directionsService.route(request, function(result, status) {
+			directionsService.route(request, function(result, status) {
 				if (status == 'OK') {
-					this.directionsDisplay.setDirections(result);
+					directionsDisplay.setDirections(result);
 				}
 			});
 		});
@@ -54,11 +54,11 @@ export class GoPage {
 		this.directionsDisplay = new google.maps.DirectionsRenderer();
 		let mapOptions = {
 			zoom: 14,
-			center: new google.maps.LatLng(this.lat, this.lon)
+			center: this.dest
 		}
 		this.map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
 		this.directionsDisplay.setMap(this.map);
-		callback();
+		callback(this.dest, this.directionsDisplay, this.directionsService);
 	}
 
 }
