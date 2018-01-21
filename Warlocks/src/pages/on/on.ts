@@ -14,6 +14,7 @@ export class OnPage {
 	accepted: Boolean;
 	alat: number;
 	alon: number;
+	confirm: any;
 
 	constructor(private http: Http, public navCtrl: NavController) {
 		this.accepted = false;
@@ -29,16 +30,50 @@ export class OnPage {
 		this.navCtrl.push(OffPage);
 	}
 
+	showConfirm(distance: number) {
+		this.confirm = this.alertCtrl.create({
+			title: 'Accept New Emergency?',
+			message: 'A civilian ' + distance + ' metres away needs help! Do you agree to help them?',
+			buttons: [{
+				text: 'No',
+				handler: () => {
+					this.http.post('https://8ef33887.ngrok.io/polling/accept', {
+						'go': false,
+					}).toPromise().then(data => {}).catch(error => {
+						console.error('An error occurred in onPage', error);
+						return Promise.reject(error.message || error);
+					});
+					this.accepted = false;
+				}
+			}, {
+				text: 'Yes',
+				handler: () => {
+					this.accepted = true
+					this.http.post('https://8ef33887.ngrok.io/polling/accept', {
+						'go': true,
+					}).toPromise().then(data => {
+						map(data.json())
+					}).catch(error => {
+						console.error('An error occurred in onPage', error);
+						return Promise.reject(error.message || error);
+					});
+					this.map(data.json());
+				}
+			}]
+		});
+		this.confirm.present();
+	}
+
 	map(args: any) {
 		this.navCtrl.push(GoPage, {
 			alat: this.alat,
 			alon: this.alon,
 			blat: args['lat'],
 			blon: args['lng'],
-            name: args['name'],
-            sex: args['sex'],
-            age: args['age'],
-            symptoms: args['symptoms']
+			name: args['name'],
+			sex: args['sex'],
+			age: args['age'],
+			symptoms: args['symptoms']
 		});
 	}
 
@@ -56,7 +91,7 @@ export class OnPage {
 				}).toPromise().then(data => {
 					if (data.json()['em']) {
 						this.accepted = true;
-						this.map(data.json());
+						showConfirm()
 					}
 				}).catch(error => {
 					console.error('An error occurred in onPage', error);

@@ -92,6 +92,7 @@ def closest():
 	potential_doctors = json.loads(data)
 	accepted = False
 	candidate = 0
+	return "true"
 
 @app.route('/polling/accept', methods = ['POST'])
 def reply():
@@ -104,3 +105,6 @@ def reply():
 		candidate = (candidate + 1) % len(doctors)
 		while doctors[candidate]['skills'] < em['skills']:
 			candidate = (candidate + 1) % len(doctors)
+		return 0
+	else:
+		return em
