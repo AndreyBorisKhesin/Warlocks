@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Platform } from 'ionic-angular';
 import {
 	GoogleMaps,
@@ -20,47 +20,45 @@ declare var google;
 	templateUrl: 'go.html'
 })
 export class GoPage {
+	lat: number;
+	lon: number;
+	dest: any;
 	map: any;
+	directionsService: any;
+	directionsDisplay: any;
 	myloc: Marker;
 	
-	constructor(private platform: Platform) {
-
+	constructor(private platform: Platform, navParams: NavParams) {
+		this.lat = navParams.get('lat');
+		this.lon = navParams.get('lon');
+		this.dest = new google.maps.LatLng(this.lat, this.lon);
+		this.directionsService = new google.maps.DirectionsService();
 	}
- 
+	
 	ionViewDidLoad(){
-		this.initializeMap();
-	}
- 
-	initializeMap() {
- 
-		let locationOptions = {timeout: 20000, enableHighAccuracy: true};
- 
-		navigator.geolocation.getCurrentPosition(
- 
-			(position) => {
-				let options = {
-					center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-					zoom: 16,
-					mapTypeId: google.maps.MapTypeId.ROADMAP
+		this.initialize(function() {
+			let request = {
+				origin: new google.maps.LatLng(43.658642, -79.3966635),
+				destination: new google.maps.LatLng(this.lat, this.lon),
+				travelMode: 'WALKING'
+			};
+			this.directionsService.route(request, function(result, status) {
+				if (status == 'OK') {
+					this.directionsDisplay.setDirections(result);
 				}
- 
-				this.map = new google.maps.Map(document.getElementById("map_canvas"), options);
-
-				this.myloc = new google.maps.Marker({
-					clickable: false,
-					icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-						new google.maps.Size(22,22),
-						new google.maps.Point(0,18),
-						new google.maps.Point(11,11)),
-					shadow: null,
-					zIndex: 999,
-					map: this.map
-				});
-
-				this.myloc.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-			}, (error) => {
-				console.log(error);
-			}, locationOptions
-		);
+			});
+		});
 	}
+ 
+	initialize(callback) {
+		this.directionsDisplay = new google.maps.DirectionsRenderer();
+		let mapOptions = {
+			zoom: 14,
+			center: new google.maps.LatLng(this.lat, this.lon)
+		}
+		this.map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+		this.directionsDisplay.setMap(this.map);
+		callback();
+	}
+
 }

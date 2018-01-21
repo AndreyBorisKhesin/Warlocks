@@ -18,6 +18,9 @@ export class OnPage {
 	}
 
 	map() {
-		this.navCtrl.push(GoPage);
+		this.navCtrl.push(GoPage, {
+			lat: 43.659642,
+			lon: -79.3976635
+		});
 	}
 }
