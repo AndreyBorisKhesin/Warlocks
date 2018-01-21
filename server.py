@@ -26,6 +26,7 @@ doctors[0] = doctor0
 doctors[1] = doctor1
 candidate = -1
 sent = False
+accepted = False
 potential_doctors = {}
 
 @app.route('/', methods = ['POST'])
@@ -111,6 +112,7 @@ def reply():
 			'null': 0
 		})
 	else:
+		accepted = True
 		go = False
 		return jsonify(em)
 
@@ -120,6 +122,7 @@ def dispatcherPoll():
 	global accepted
 	global potential_doctors
 	if accepted:
+		accepted = False
 		return jsonify(potential_doctors[candidate])
 	else:
 		return jsonify({'id': -1})
