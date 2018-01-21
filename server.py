@@ -65,7 +65,7 @@ def poll():
 		if doctors[i]['id'] == info['id']:
 			doctors[i]['lat'] = info['lat']
 			doctors[i]['lng'] = info['lng']
-		if (go and not accepted
+		if (go and not accepted and candidate >= 0
 			and potential_doctors[candidate]['id'] == info['id']):
 			return jsonify({
 				'em': True,
@@ -91,13 +91,16 @@ def closest():
 def reply():
 	global candidate
 	global em
+	global doctors
 	data = request.data.decode('utf-8')
 	info = json.loads(data)
 	accepted = info['go']
 	if not accepted:
 		candidate = (candidate + 1) % len(doctors)
-		while potential_doctors[candidate]['skills'] < em['skills']:
+		while potential_doctors[candidate]['skills'] < em['Skills']:
 			candidate = (candidate + 1) % len(doctors)
-		return jsonify({})
+		return jsonify({
+			'null': 0
+		})
 	else:
 		return jsonify(em)

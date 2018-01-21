@@ -83,14 +83,16 @@ export class OnPage {
 				this.alat = position.coords.latitude;
 				this.alon = position.coords.longitude;
 
+				this.accepted = true;
 				this.http.post('https://8ef33887.ngrok.io/polling', {
 					'lat': this.alat,
 					'lng': this.alon,
 					'id': '342d'
 				}).toPromise().then(data => {
 					if (data.json()['em']) {
-						this.accepted = true;
 						this.showConfirm(data.json()['dist'])
+					} else {
+						this.accepted = false;
 					}
 				}).catch(error => {
 					console.error('An error occurred in onPage', error);
