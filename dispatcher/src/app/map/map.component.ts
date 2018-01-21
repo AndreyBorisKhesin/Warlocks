@@ -81,7 +81,6 @@ export class MapComponent implements OnInit {
         console.log("gotResponders = " + this.gotResponders);
 
         // then we start polling the server for info on the dispatched doctor
-        this.dispatched = false;
         setInterval(() => {
           this.dispatcherPoll();
         }, 3000);
@@ -93,8 +92,8 @@ export class MapComponent implements OnInit {
     if (!this.dispatched) {
       this.mapService.PollForDispatched()
         .then(response => {
-          let id = response['id'];
-          if (id != -1) {
+          let id = response;
+          if (id != "-1") {
             console.log("in map component, dispatched id is " + id);
             this.dispatched = true;
           }
