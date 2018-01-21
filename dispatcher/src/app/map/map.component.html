@@ -4,22 +4,22 @@
   <div *ngIf='gotResponders'>
     <agm-marker *ngFor="let r of responders; let i = index" [latitude]="r.lat" [longitude]="r.lng" [label]="" [iconUrl]="getResponderIcon(r)" (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
-      <agm-info-window #infoWindow>
+      <!-- <agm-info-window #infoWindow>
         <strong>{{r.name}} #{{r.id}}</strong>
         <p>Skill level: {{r.skills}}</p>
         <input type="button" value="Dispatch" (click)="dispatch(r.id)" />
-      </agm-info-window>
+      </agm-info-window> -->
     </agm-marker>
   </div>
 
   <agm-marker [latitude]="emergency.Lat" [longitude]="emergency.Lng" [label]="" [iconUrl]="getEmergencyIcon(emergency)" (markerClick)="emergencyClick(emergency); gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
     <agm-info-window #infoWindow>
-      <!-- <strong>Name: </strong>{{emergency.name}}<br/>
-        <strong>Sex: </strong>{{emergency.sex}}<br/>
-        <strong>Age: </strong>{{emergency.age}}<br/>
-        <strong>Symptoms: </strong>
-        <p>{{emergency.symptoms}}</p> -->
+      <strong>Name: </strong>{{emergency.name}}<br/>
+      <strong>Sex: </strong>{{emergency.sex}}<br/>
+      <strong>Age: </strong>{{emergency.age}}<br/>
+      <strong>Symptoms: </strong>
+      <p>{{emergency.symptoms}}</p>
     </agm-info-window>
   </agm-marker>
 </agm-map>

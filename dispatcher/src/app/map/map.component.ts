@@ -29,7 +29,6 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.responders = this.mapService.getResponders();
     this.gotResponders = false;
     this.responders = [];
     this.haveEmergency = true;
@@ -61,7 +60,7 @@ export class MapComponent implements OnInit {
     return '../../assets/emergency.png'
   }
 
-  mapStartEmergency(em: Emergency): void {
+  public mapStartEmergency(em: Emergency): void {
     console.log(em);
     this.mapService.startEmergency(em).then(
       response => {
@@ -77,6 +76,7 @@ export class MapComponent implements OnInit {
           closest[0]['dist'] + " meters");
         // send closest responders to server
         this.mapService.SendClosestResponders(closest);
+        console.log("gotResponders = " + this.gotResponders);
       }
     )
   }

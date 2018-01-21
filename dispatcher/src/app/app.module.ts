@@ -29,7 +29,8 @@ import { HttpModule } from '@angular/http';
   providers: [
     MapService,
     HttpClientModule,
-    ShareFormService
+    ShareFormService,
+    MapComponent
   ],
   declarations: [AppComponent, MapComponent, PatientFormComponent],
   bootstrap: [AppComponent]
