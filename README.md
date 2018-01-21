@@ -32,6 +32,7 @@ On-duty Doctors are notified whenever a new emergency occurs that is both within
 
 <p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/mobile-newem.png" width=30%> </p>
 
+<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/mobile-path.png" width=30%> </p>
 
 
 ## 3. The Technology
