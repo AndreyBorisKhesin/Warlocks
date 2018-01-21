@@ -29,7 +29,7 @@ export class MapService {
       'Content-Type': 'application/json',
    });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(url, em, options)
+    return this.http.post(url, JSON.stringify(em), options)
       .toPromise()
       .then(response => {
         console.log(response);
