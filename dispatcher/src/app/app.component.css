@@ -2,6 +2,7 @@
   float: left;
   width: 75%;
   margin-left: 20px;
+  height: auto;
 }
 
 .form-column {
@@ -31,6 +32,13 @@
   position: relative;
   margin-bottom: 30px;
   vertical-align: middle;
+}
+
+.header {
+    height: 13%;
+}
+.row {
+    height:80%;
 }
 
 .thickness {
