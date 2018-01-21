@@ -41,7 +41,7 @@ export class MapComponent implements OnInit {
 
   getResponderIcon(responder: Responder) {
     let path = '../../assets/';
-    switch (responder.skills.length) {
+    switch (responder.skills) {
       case 1:
         return path + 'cpr.png';
       case 2:

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Responder, Emergency } from './classes';
 
-import { RESPONDERS } from './mock-responders';
-
 import 'rxjs/add/operator/toPromise';
 
 import { environment } from '../environments/environment';

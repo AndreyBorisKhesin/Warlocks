@@ -6,9 +6,7 @@
 
       <agm-info-window #infoWindow>
         <strong>{{r.name}} #{{r.id}}</strong>
-        <ul>
-          <li *ngFor="let s of r.skills">{{s}}</li>
-        </ul>
+        <p>Skill level: {{r.skills}}</p>
         <input type="button" value="Dispatch" (click)="dispatch(r.id)" />
       </agm-info-window>
     </agm-marker>
