@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { AlertController, NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 import { OffPage } from '../off/off';
@@ -16,7 +16,8 @@ export class OnPage {
 	alon: number;
 	confirm: any;
 
-	constructor(private http: Http, public navCtrl: NavController) {
+	constructor(private http: Http, public navCtrl: NavController,
+		public alertCtrl: AlertController) {
 		this.accepted = false;
 	}
 
@@ -48,16 +49,14 @@ export class OnPage {
 			}, {
 				text: 'Yes',
 				handler: () => {
-					this.accepted = true
 					this.http.post('https://8ef33887.ngrok.io/polling/accept', {
 						'go': true,
 					}).toPromise().then(data => {
-						map(data.json())
+						this.map(data.json())
 					}).catch(error => {
 						console.error('An error occurred in onPage', error);
 						return Promise.reject(error.message || error);
 					});
-					this.map(data.json());
 				}
 			}]
 		});
@@ -91,7 +90,7 @@ export class OnPage {
 				}).toPromise().then(data => {
 					if (data.json()['em']) {
 						this.accepted = true;
-						showConfirm()
+						this.showConfirm(data.json()['dist'])
 					}
 				}).catch(error => {
 					console.error('An error occurred in onPage', error);
