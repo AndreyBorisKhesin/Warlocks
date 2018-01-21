@@ -73,10 +73,10 @@ export class MapComponent implements OnInit {
         // find closest responder
         let closest = this.findClosestResponder(em);
         console.log(closest);
-        // console.log("Closest responder: " + closest['responder'].name + ", " +
-        //   closest['distance'] + " meters");
+        console.log("Closest responder: " + closest[0]['id'] + ", " +
+          closest[0]['dist'] + " meters");
         // send closest responders to server
-
+        this.mapService.SendClosestResponders(closest);
       }
     )
   }
@@ -98,28 +98,36 @@ export class MapComponent implements OnInit {
       keys[j] = r.id;
       j = j + 1;
     }
+    console.log("Dict:");
     console.log(dict);
+    console.log(this.responders.length);
     j = 0;
     while (j < this.responders.length) {
-      let min = 1000;
-      for (let k of keys) {
-        if (min > dict[k]) {
-          min = dict[k];
-          sorted[j] = k;
-          let index = keys.indexOf(k, 0);
-          if (index > -1) {
-            keys.splice(index, 1);
-          }
+      console.log("Start while");
+      let min = 100000;
+      let k;
+      for (let ke of keys) {
+        if (min > dict[ke]) {
+          min = dict[ke];
+          k = ke
         }
+      }
+      sorted[j] = k;
+      let index = keys.indexOf(k, 0);
+      if (index > -1) {
+        keys.splice(index, 1);
       }
       j = j + 1;
     }
+    console.log("Sorted: ");
     console.log(sorted);
+    console.log(sorted.length);
 
     j = 0;
     let ret = [];
-    for(let s in sorted){
-      ret[j] = {"id": s, "dist": dict[s]};
+    while (j < sorted.length) {
+      console.log("s: " + sorted[j]);
+      ret[j] = { "id": sorted[j], "dist": Math.round(dict[sorted[j]]) };
       j += 1;
     }
 
