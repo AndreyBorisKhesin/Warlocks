@@ -1,39 +1,27 @@
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
-<agm-map
-    #gm
-    [latitude]="lat"
-    [longitude]="lng"
-    [zoom]="zoom">
-    <agm-marker
-        *ngFor="let r of responders; let i = index"
-        [latitude]="r.lat"
-        [longitude]="r.lng"
-        [label]=""
-        [iconUrl]="getResponderIcon(r)"
-        (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+<agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+  <div *ngIf='gotResponders'>
+    <agm-marker *ngFor="let r of responders; let i = index" [latitude]="r.lat" [longitude]="r.lng" [label]="" [iconUrl]="getResponderIcon(r)" (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
       <agm-info-window #infoWindow>
         <strong>{{r.name}} #{{r.id}}</strong>
         <ul>
-            <li *ngFor="let s of r.skills">{{s}}</li>
+          <li *ngFor="let s of r.skills">{{s}}</li>
         </ul>
-        <input type="button" value="Dispatch" (click)="dispatch(r.id)"/>
+        <input type="button" value="Dispatch" (click)="dispatch(r.id)" />
       </agm-info-window>
     </agm-marker>
-    <agm-marker
-        [latitude]="emergency.Lat"
-        [longitude]="emergency.Lng"
-        [label]=""
-        [iconUrl]="getEmergencyIcon(emergency)"
-        (markerClick)="emergencyClick(emergency); gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+  </div>
 
-        <agm-info-window #infoWindow>
-          <strong>Name: </strong>{{emergency.name}}<br/>
-          <strong>Sex: </strong>{{emergency.sex}}<br/>
-          <strong>Age: </strong>{{emergency.age}}<br/>
-          <strong>Location: </strong>{{emergency.location}}<br/>
-          <strong>Symptoms: </strong><p>{{emergency.symptoms}}</p>
-        </agm-info-window>
-    </agm-marker>
+  <agm-marker [latitude]="emergency.Lat" [longitude]="emergency.Lng" [label]="" [iconUrl]="getEmergencyIcon(emergency)" (markerClick)="emergencyClick(emergency); gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+
+    <agm-info-window #infoWindow>
+      <!-- <strong>Name: </strong>{{emergency.name}}<br/>
+        <strong>Sex: </strong>{{emergency.sex}}<br/>
+        <strong>Age: </strong>{{emergency.age}}<br/>
+        <strong>Symptoms: </strong>
+        <p>{{emergency.symptoms}}</p> -->
+    </agm-info-window>
+  </agm-marker>
 </agm-map>

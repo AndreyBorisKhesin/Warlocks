@@ -18,19 +18,19 @@ export class MapComponent implements OnInit {
   responders: Responder[];
   haveEmergency: boolean;
   emergency: Emergency;
+  gotResponders: boolean;
 
-    getEmergency(): Emergency {
-
-        return this.shareFormService.sharedata();
-
-    }
+  getEmergency(): Emergency {
+    return this.shareFormService.sharedata();
+  }
 
   constructor(private mapService: MapService,
-              private shareFormService: ShareFormService) {
+    private shareFormService: ShareFormService) {
   }
 
   ngOnInit() {
     // this.responders = this.mapService.getResponders();
+    this.gotResponders = false;
     this.responders = [];
     this.haveEmergency = true;
     this.emergency = this.getEmergency();
@@ -68,6 +68,7 @@ export class MapComponent implements OnInit {
         console.log("in map component");
         this.responders = response;
         console.log(this.responders);
+        this.gotResponders = true;
       }
     )
 
