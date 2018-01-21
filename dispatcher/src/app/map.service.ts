@@ -63,6 +63,23 @@ export class MapService {
       .then(response => {console.log("Closest received")});
   }
 
+  /*
+  * Poll for information on the dispatched doctor
+  */
+  // PollForDispatched(): Promise<Responder> {
+  //   let url = `${environment.api}/dispatcherpoll`;
+  //   // let headers = new Headers({
+  //   //   'Content-Type': 'application/json',
+  //   // });
+  //   // let options = new RequestOptions({ headers: headers });
+  //   return this.http.post(url, JSON.stringify({}))
+  //   .toPromise()
+  //   .then( response => {
+  //     response as Responder
+  //   })
+  //   .catch(handleError);
+  // }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred in mapService', error);
     return Promise.reject(error.message || error);
