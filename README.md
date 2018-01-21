@@ -15,4 +15,6 @@ the patient to arrive on scene so as to give the patient the help needed earlier
 
 ## 2. Main Features
 
+## 3. The Technology
+
 Created by Asic Chen, Christine KC Cheng, Andrey Boris Khesin and Dmitry Ten.
