@@ -29,11 +29,14 @@ export class MapService {
       'Content-Type': 'application/json',
    });
     let options = new RequestOptions({ headers: headers });
+    // let doc = new Doctor();
     return this.http.post(url, JSON.stringify(em), options)
       .toPromise()
       .then(response => {
-        console.log(response);
-        response.json() as Doctor;
+        console.log("in map service");
+        let doc = new Doctor(response.json()['id']);
+        console.log("doc['id'] = " + doc['id']);
+        return doc;
       })
       .catch(this.handleError);
   }
@@ -43,15 +46,6 @@ export class MapService {
     return Promise.reject(error.message || error);
   }
 
-  test1(): void {
-    let url = `${environment.api}/emergency/start`;
-    let reqBody = {
-        "Age": "Twenty"
-    };
-    console.log(JSON.stringify(reqBody));
-    this.http.post(url, JSON.stringify(reqBody)).toPromise().then(
-      response => { console.log(response); }
-    )
-  }
+
 
 }

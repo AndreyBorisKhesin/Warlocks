@@ -30,5 +30,9 @@ export class OneString {
 }
 
 export class Doctor {
-  id: string;
+    id: string;
+
+    constructor(_id: string) {
+      this.id = _id;
+    }
 }
