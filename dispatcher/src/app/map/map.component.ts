@@ -22,6 +22,8 @@ export class MapComponent implements OnInit {
   gotResponders: boolean;
   map: Element;
   dispatched: boolean;
+  dispatchedId: string;
+  dispatchedName: string;
 
   getEmergency(): Emergency {
     return this.shareFormService.sharedata();
@@ -95,6 +97,12 @@ export class MapComponent implements OnInit {
           let id = response;
           if (id != "-1") {
             console.log("in map component, dispatched id is " + id);
+            for(let d of this.responders) {
+              if(d.id == id) {
+                this.dispatchedName = d.name;
+              }
+            }
+            this.dispatchedId = id;
             this.dispatched = true;
           }
         });
