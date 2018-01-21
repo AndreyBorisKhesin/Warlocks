@@ -98,6 +98,15 @@ def poll():
 				'em': False
 			})
 
+@app.route('/name', methods = ['POST'])
+def name():
+	global doctors
+	data = request.data.decode('utf-8')
+	info = json.loads(data)
+	for i in range(len(doctors)):
+		if doctors[i]['id'] == info['id']:
+			return jsonify({'name': doctors[i]['name']})
+
 @app.route('/closest', methods = ['POST'])
 def closest():
 	global candidate
