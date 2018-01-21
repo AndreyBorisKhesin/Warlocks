@@ -11,10 +11,12 @@ import { GoPage } from '../go/go';
 })
 export class OnPage {
 	task: any;
+	accepted: Boolean;
 	alat: number;
 	alon: number;
 
 	constructor(private http: Http, public navCtrl: NavController) {
+		this.accepted = false;
 	}
 
 	ionViewDidLoad() {
@@ -37,23 +39,26 @@ export class OnPage {
 	}
 
 	pull() {
-		let locationOptions = {timeout: 20000, enableHighAccuracy: true};
-		navigator.geolocation.getCurrentPosition((position) => {
-			this.alat = position.coords.latitude;
-			this.alon = position.coords.longitude;
-
-			this.http.post('https://8ef33887.ngrok.io/polling', {
-				'lat': this.alat,
-				'lng': this.alon,
-				'id': '4913'
-			}).toPromise().then(data => {
-				if (data.json()['em']) {
-					this.map(data.json()['lat'], data.json()['lng']);
-				}
-			}).catch(error => {
-				console.error('An error occurred in onPage', error);
-				return Promise.reject(error.message || error);
-			});
-		}, (err) => {});
+		if (!this.accepted) {
+			let locationOptions = {timeout: 20000, enableHighAccuracy: true};
+			navigator.geolocation.getCurrentPosition((position) => {
+				this.alat = position.coords.latitude;
+				this.alon = position.coords.longitude;
+	
+				this.http.post('https://8ef33887.ngrok.io/polling', {
+					'lat': this.alat,
+					'lng': this.alon,
+					'id': '4913'
+				}).toPromise().then(data => {
+					if (data.json()['em']) {
+						this.accepted = true;
+						this.map(43.6705053, -79.3978192);//data.json()['lat'], data.json()['lng']);
+					}
+				}).catch(error => {
+					console.error('An error occurred in onPage', error);
+					return Promise.reject(error.message || error);
+				});
+			}, (err) => {});
+		}
 	}
 }
