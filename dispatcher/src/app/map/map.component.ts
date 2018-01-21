@@ -21,6 +21,7 @@ export class MapComponent implements OnInit {
   emergency: Emergency;
   gotResponders: boolean;
   map: Element;
+  dispatched: boolean;
 
   getEmergency(): Emergency {
     return this.shareFormService.sharedata();
@@ -31,6 +32,7 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dispatched = false;
     this.gotResponders = false;
     this.responders = [];
     this.haveEmergency = true;
@@ -79,20 +81,25 @@ export class MapComponent implements OnInit {
         console.log("gotResponders = " + this.gotResponders);
 
         // then we start polling the server for info on the dispatched doctor
-        let dispatched = false;
-        while(!dispatched) {
-          this.mapService.PollForDispatched()
-          .then(response => {
-            let id = response['id'];
-            if(id != -1) {
-              console.log("in map component, dispatched id is " + id);
-              dispatched = true;
-            }
-          });
-        }
-        
+        this.dispatched = false;
+        setInterval(() => {
+          this.dispatcherPoll();
+        }, 3000);
       }
     )
+  }
+
+  dispatcherPoll(): void {
+    if (!this.dispatched) {
+      this.mapService.PollForDispatched()
+        .then(response => {
+          let id = response['id'];
+          if (id != -1) {
+            console.log("in map component, dispatched id is " + id);
+            this.dispatched = true;
+          }
+        });
+    }
   }
 
   calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number) {
