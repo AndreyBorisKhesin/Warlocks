@@ -20,20 +20,9 @@ The dispatcher takes down information about an ongoing emergency from a 911 call
 
 ### b. Mobile view: The Doctor
 
-A Doctor is a certified individual who is registered with Doctors Within Borders. Each Doctor is identified by their unique code.
+![Mobile](mobile_screenshots.png)
 
-<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/mobile-homecode.png" width=30%> </p>
-
-The Doctor can choose when they are on duty.
-
-<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/mobile-on.png" width=30%> </p>
-
-On-duty Doctors are notified whenever a new emergency occurs that is both within a reasonable distance and the Doctor's certified skill level.
-
-<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/mobile-newem.png" width=30%> </p>
-
-<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/mobile-path.png" width=30%> </p>
-
+A Doctor is a certified individual who is registered with Doctors Within Borders. Each Doctor is identified by their unique code. The Doctor can choose when they are on duty. On-duty Doctors are notified whenever a new emergency occurs that is both within a reasonable distance and the Doctor's certified skill level.
 
 ## 3. The Technology
 
