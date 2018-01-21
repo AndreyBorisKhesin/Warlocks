@@ -12,7 +12,7 @@ import { MapComponent } from '../map/map.component';
 export class PatientFormComponent implements OnInit {
   sex = ['Female', 'Male'];
 
-  model = new Emergency('', '', '', 43.657081, -79.3961597, '', 1);
+  model = new Emergency('', '', '', 43.6591039, -79.3990747, '', 1);
 
   public constructor(
     private shareFormService: ShareFormService,
