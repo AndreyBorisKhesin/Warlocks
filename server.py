@@ -24,7 +24,8 @@ def root():
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():
 	print(request.data)
-	store = json.loads(request.data)
+	data = request.data.decode('utf-8')
+	store = json.loads(data)
 	print(store)
 	print(store['Lat'])
 	print(store['Lng'])
