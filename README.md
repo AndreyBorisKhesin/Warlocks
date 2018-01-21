@@ -25,6 +25,6 @@ A Doctor is a certified individual who is registered with Doctors Within Borders
 
 ## 3. The Technology
 
-The app uses _Flask_ to run a server, which communicates between the web app and the mobile app. The server supports an API which is used by the web and mobile app to get information on doctor positions, identify emergencies, and dispatch doctors. The web app was created in Angular 2 with Bootstrap 4. The mobile app was created with Ionic 3.
+The app uses _Flask_ to run a server, which communicates between the web app and the mobile app. The server supports an API which is used by the web and mobile app to get information on doctor positions, identify emergencies, and dispatch doctors. The web app was created in _Angular 2_ with _Bootstrap 4_. The mobile app was created with _Ionic 3_.
 
 Created by Asic Chen, Christine KC Cheng, Andrey Boris Khesin and Dmitry Ten.
