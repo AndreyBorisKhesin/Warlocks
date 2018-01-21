@@ -66,19 +66,20 @@ export class MapService {
   /*
   * Poll for information on the dispatched doctor
   */
-  // PollForDispatched(): Promise<Responder> {
-  //   let url = `${environment.api}/dispatcherpoll`;
-  //   // let headers = new Headers({
-  //   //   'Content-Type': 'application/json',
-  //   // });
-  //   // let options = new RequestOptions({ headers: headers });
-  //   return this.http.post(url, JSON.stringify({}))
-  //   .toPromise()
-  //   .then( response => {
-  //     response as Responder
-  //   })
-  //   .catch(handleError);
-  // }
+  PollForDispatched(): Promise<string> {
+    let url = `${environment.api}/dispatcherpoll`;
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(url, options)
+    .toPromise()
+    .then( response => {
+      console.log("in map service, dispatched id is " + response.json()['id']);
+      return response.json()['id'];
+    });
+
+  }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred in mapService', error);

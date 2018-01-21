@@ -77,10 +77,20 @@ export class MapComponent implements OnInit {
         // send closest responders to server
         this.mapService.SendClosestResponders(closest);
         console.log("gotResponders = " + this.gotResponders);
-        // How do I use this.map???
 
         // then we start polling the server for info on the dispatched doctor
-
+        let dispatched = false;
+        while(!dispatched) {
+          this.mapService.PollForDispatched()
+          .then(response => {
+            let id = response['id'];
+            if(id != -1) {
+              console.log("in map component, dispatched id is " + id);
+              dispatched = true;
+            }
+          });
+        }
+        
       }
     )
   }
