@@ -30,7 +30,8 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.responders = this.mapService.getResponders();
+    // this.responders = this.mapService.getResponders();
+    this.responders = [];
     this.haveEmergency = true;
     this.emergency = this.getEmergency();
     if (this.haveEmergency) {
@@ -65,7 +66,8 @@ export class MapComponent implements OnInit {
     this.mapService.startEmergency(em).then(
       response => {
         console.log("in map component");
-        console.log(response);
+        this.responders = response;
+        console.log(this.responders);
       }
     )
 

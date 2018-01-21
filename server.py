@@ -10,14 +10,14 @@ doctors = {} # Each doctor is identified by id; paired with curred location
 doctor1 = {
 	'id': '342d',
 	'name': 'Mister Doctor',
-	'skills': 'First aid',
+	'skills': ['First aid', 'CPR'],
 	'lat': 43.6955053,
 	'lng': -79.3978192
 }
 doctor2 = {
 	'id': '168a',
 	'name': 'Doctor Doom',
-	'skills': 'First aid',
+	'skills': ['First aid'],
 	'lat': 43.6995053,
 	'lng': -79.3678192
 }
