@@ -5,9 +5,7 @@ import json
 app = Flask(__name__)
 CORS(app)
 
-global em
 em = {}
-global go
 go = False
 doctors = {}
 doctor0 = {
@@ -28,7 +26,7 @@ doctors[0] = doctor0
 doctors[1] = doctor1
 candidate = -1
 accepted = False
-potential_doctors = doctors
+potential_doctors = {}
 
 @app.route('/', methods = ['POST'])
 def root():
@@ -36,7 +34,8 @@ def root():
 
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():
-	print(request.data)
+	global go
+	global em
 	data = request.data.decode('utf-8')
 	store = json.loads(data)
 	go = True
@@ -59,17 +58,22 @@ def poll():
 	global go
 	global doctors
 	global accepted
+	global potential_doctors
 	data = request.data.decode('utf-8')
 	info = json.loads(data)
 	for i in range(len(doctors)):
 		if doctors[i]['id'] == info['id']:
 			doctors[i]['lat'] = info['lat']
 			doctors[i]['lng'] = info['lng']
-		if (go and not accepted and candidate == i):
-			return jsonify(em)
+		if (go and not accepted
+			and potential_doctors[candidate]['id'] == info['id']):
+			return jsonify({
+				'em': True,
+				'dist': potential_doctors[candidate]['dist']
+			})
 		else:
 			return jsonify({
-				'em': go,
+				'em': False
 			})
 
 @app.route('/closest', methods = ['POST'])
@@ -94,6 +98,6 @@ def reply():
 		candidate = (candidate + 1) % len(doctors)
 		while potential_doctors[candidate]['skills'] < em['skills']:
 			candidate = (candidate + 1) % len(doctors)
-		return 0
+		return jsonify({})
 	else:
-		return em
+		return jsonify(em)
