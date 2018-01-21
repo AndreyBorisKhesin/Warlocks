@@ -4,11 +4,10 @@
   <div *ngIf='gotResponders'>
     <agm-marker *ngFor="let r of responders; let i = index" [latitude]="r.lat" [longitude]="r.lng" [label]="" [iconUrl]="getResponderIcon(r)" (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
-      <!-- <agm-info-window #infoWindow>
+      <agm-info-window #infoWindow>
         <strong>{{r.name}} #{{r.id}}</strong>
         <p>Skill level: {{r.skills}}</p>
-        <input type="button" value="Dispatch" (click)="dispatch(r.id)" />
-      </agm-info-window> -->
+      </agm-info-window>
     </agm-marker>
   </div>
 
