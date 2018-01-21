@@ -11,6 +11,7 @@ import { ShareFormService } from '../share-form.service';
   providers: [MapService]
 })
 export class MapComponent implements OnInit {
+
   title: string = 'Doctors within Borders';
   lat: number = 43.6595053;
   lng: number = -79.3978192;
@@ -19,6 +20,7 @@ export class MapComponent implements OnInit {
   haveEmergency: boolean;
   emergency: Emergency;
   gotResponders: boolean;
+  map: Element;
 
   getEmergency(): Emergency {
     return this.shareFormService.sharedata();
@@ -33,9 +35,7 @@ export class MapComponent implements OnInit {
     this.responders = [];
     this.haveEmergency = true;
     this.emergency = this.getEmergency();
-    if (this.haveEmergency) {
-
-    }
+    this.map = <HTMLInputElement>document.getElementById('mapElement');
   }
 
   getResponderIcon(responder: Responder) {
@@ -77,9 +77,10 @@ export class MapComponent implements OnInit {
         // send closest responders to server
         this.mapService.SendClosestResponders(closest);
         console.log("gotResponders = " + this.gotResponders);
+        // How do I use this.map???
 
         // then we start polling the server for info on the dispatched doctor
-        
+
       }
     )
   }

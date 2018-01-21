@@ -1,6 +1,6 @@
 <!-- this creates a google map on the page with the given lat/lng from -->
 <!-- the component as the initial center of the map: -->
-<agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+<agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" id='mapElement'>
   <div *ngIf='gotResponders'>
     <agm-marker *ngFor="let r of responders; let i = index" [latitude]="r.lat" [longitude]="r.lng" [label]="" [iconUrl]="getResponderIcon(r)" (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
@@ -12,12 +12,12 @@
     </agm-marker>
   </div>
 
-  <agm-marker [latitude]="emergency.Lat" [longitude]="emergency.Lng" [label]="" [iconUrl]="getEmergencyIcon(emergency)" (markerClick)="emergencyClick(emergency); gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+  <agm-marker [latitude]="emergency.Lat" [longitude]="emergency.Lng" [label]="" [iconUrl]="getEmergencyIcon(emergency)" (markerClick)="emergencyClick(getEmergency()); gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
     <agm-info-window #infoWindow>
-      <strong>Name: </strong>{{emergency.name}}<br/>
-      <strong>Sex: </strong>{{emergency.sex}}<br/>
-      <strong>Age: </strong>{{emergency.age}}<br/>
+      <strong>Name: </strong>{{emergency.Name}}<br/>
+      <strong>Sex: </strong>{{emergency.Sex}}<br/>
+      <strong>Age: </strong>{{emergency.Age}}<br/>
       <strong>Symptoms: </strong>
       <p>{{emergency.symptoms}}</p>
     </agm-info-window>
