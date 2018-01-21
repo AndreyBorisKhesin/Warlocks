@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)
 
 em = {}
-doctors = [] # Each doctor is identified by id; paired with curred location
+doctors = {} # Each doctor is identified by id; paired with curred location
 doctor1 = {
 	'id': '342d',
 	'name': 'Mister Doctor',
@@ -21,8 +21,8 @@ doctor2 = {
 	'lat': 43.6995053,
 	'lng': -79.3678192
 }
-doctors.append(doctor1)
-doctors.append(doctor2)
+doctors.set(1, doctor1)
+doctors.set(2, doctor2)
 
 @app.route('/', methods = ['POST'])
 def root():

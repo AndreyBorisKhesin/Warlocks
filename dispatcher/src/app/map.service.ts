@@ -29,11 +29,11 @@ export class MapService {
       'Content-Type': 'application/json',
    });
     let options = new RequestOptions({ headers: headers });
-    // let doc = new Doctor();
     return this.http.post(url, JSON.stringify(em), options)
       .toPromise()
       .then(response => {
         console.log("in map service");
+        console.log(response.json());
         let doc = new Responder(
           response.json()['id'],
           response.json()['name'],
