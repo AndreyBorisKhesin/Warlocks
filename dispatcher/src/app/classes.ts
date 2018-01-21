@@ -28,3 +28,7 @@ export class Emergency {
 export class OneString {
     s: string;
 }
+
+export class Doctor {
+  id: string;
+}

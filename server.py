@@ -13,13 +13,13 @@ def root():
 	#do stuff with request.header style variables
 	return 'Borders Within Doctors - not haunted'
 
-@app.route('/test1', methods = ['POST'])
-def test1():
-	d = request.values.get('Age', None)
-	if d:
-		return d
-	else:
-		return "No age received"
+# @app.route('/test1', methods = ['POST'])
+# def test1():
+# 	d = request.values.get('Age', None)
+# 	if d:
+# 		return d
+# 	else:
+# 		return "No age received"
 
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():
