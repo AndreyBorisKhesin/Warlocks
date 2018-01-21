@@ -2,8 +2,7 @@
 # Doctors Within Borders
 ### A crowdsourcing app that improves first response time to emergencies by connecting city 911 dispatchers with certified civilians
 
-<!-- ![Logo](dispatcher.png) -->
-<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/dispatcher.png" width=75%> </p>
+<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/dispatcher.png" width=85%> </p>
 
 ## 1. The Challenge
 
@@ -22,6 +21,19 @@ The dispatcher takes down information about an ongoing emergency from a 911 call
 ### b. Mobile view: The Doctor
 
 A Doctor is a certified individual who is registered with Doctors Within Borders. Each Doctor is identified by their unique code.
+
+<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/mobile-homecode.png" width=30%> </p>
+
+The Doctor can choose when they are on duty.
+
+<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/mobile-on.png" width=30%> </p>
+
+On-duty Doctors are notified whenever a new emergency occurs that is both within a reasonable distance and the Doctor's certified skill level.
+
+<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/mobile-newem.png" width=30%> </p>
+
+<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/mobile-path.png" width=30%> </p>
+
 
 ## 3. The Technology
 
