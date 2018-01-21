@@ -16,13 +16,20 @@ the patient to arrive on scene so as to give the patient the help needed earlier
 
 ### a. Web view: The Dispatcher
 
+<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks/blob/master/dispatcher_doctors.png" width=75%> </p>
+
 The dispatcher takes down information about an ongoing emergency from a 911 call, and dispatches a Doctor with the help of our dashboard.
+The Doctors are sorted by relevant skill sets and closest distances to the site of the emergency.
 
 ### b. Mobile view: The Doctor
 
 ![Mobile](mobile_screenshots.png)
 
 A Doctor is a certified individual who is registered with Doctors Within Borders. Each Doctor is identified by their unique code. The Doctor can choose when they are on duty. On-duty Doctors are notified whenever a new emergency occurs that is both within a reasonable distance and the Doctor's certified skill level.
+
+If a Doctor agrees to help with an emergency, a path is automatically generated to navigate them to the site of the emergency.
+If a Doctor declines, the emergency invitation is passed on to the next closest Doctor.
+
 
 ## 3. The Technology
 
