@@ -6,20 +6,21 @@ app = Flask(__name__)
 CORS(app)
 
 em = {}
+go = False
 doctors = {} # Each doctor is identified by id; paired with curred location
 doctor1 = {
 	'id': '342d',
 	'name': 'Mister Doctor',
 	'skills': ['First aid', 'CPR'],
-	'lat': 43.6955053,
-	'lng': -79.3978192
+	'lat': 43.6685586,
+	'lng': -79.3979803
 }
 doctor2 = {
 	'id': '168a',
 	'name': 'Doctor Doom',
 	'skills': ['First aid'],
-	'lat': 43.6995053,
-	'lng': -79.3678192
+	'lat': 43.6694453,
+	'lng': -79.3954161
 }
 doctors[1] = doctor1
 doctors[2] = doctor2
@@ -31,13 +32,16 @@ def root():
 
 @app.route('/emergency/start', methods = ['POST'])
 def startEmergency():
+	global em
+	global go
 	print(request.data)
 	data = request.data.decode('utf-8')
 	store = json.loads(data)
 	print(store)
 	print(store['Lat'])
 	print(store['Lng'])
-	em = {}
+	go = True
+	em['em'] = go
 	em['name'] = store['Name']
 	em['sex'] = store['Sex']
 	em['age'] = store['Age']
@@ -57,4 +61,17 @@ def broadcast():
 @app.route('/polling', methods = ['POST'])
 def poll():
 	# Doctor, identified by id, sending in current location
-	return "Polling now"
+	global em
+	global go
+	if go:
+		return jsonify(em)
+	else:
+		return jsonify({
+			'em': go,
+		})
+
+@app.route('/accepted', methods = ['POST'])
+def acceptedEmergency():
+    # Emergency has been accepted
+    global go
+    go = False
