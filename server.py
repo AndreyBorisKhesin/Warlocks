@@ -11,15 +11,15 @@ doctor1 = {
 	'id': '342d',
 	'name': 'Mister Doctor',
 	'skills': ['First aid', 'CPR'],
-	'lat': 43.6955053,
-	'lng': -79.3978192
+	'lat': 43.6685586,
+	'lng': -79.3979803
 }
 doctor2 = {
 	'id': '168a',
 	'name': 'Doctor Doom',
 	'skills': ['First aid'],
-	'lat': 43.6995053,
-	'lng': -79.3678192
+	'lat': 43.6694453,
+	'lng': -79.3954161
 }
 doctors[1] = doctor1
 doctors[2] = doctor2
