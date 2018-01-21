@@ -1,11 +1,11 @@
 export class Responder {
     id: string;
     name: string;
-    skills: string[];
+    skills: number;
     lat: number;
     lng: number;
 
-    constructor(_id: string, _name: string, _skills: string[], _lat: number, _lng: number) {
+    constructor(_id: string, _name: string, _skills: number, _lat: number, _lng: number) {
         this.id = _id;
         this.name = _name;
         this.skills = _skills;

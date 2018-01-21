@@ -38,11 +38,11 @@ export class MapService {
         let len = Object.keys(response.json()).length;
         for (let i = 0; i < len; i++) {
           let doc = new Responder(
-            response.json()[i+1]['id'],
-            response.json()[i+1]['name'],
-            response.json()[i+1]['skills'],
-            response.json()[i+1]['lat'],
-            response.json()[i+1]['lng']
+            response.json()[i]['id'],
+            response.json()[i]['name'],
+            response.json()[i]['skills'],
+            response.json()[i]['lat'],
+            response.json()[i]['lng']
           );
           doctors[i] = doc;
         }
@@ -55,7 +55,7 @@ export class MapService {
   * Send the list of Ids in sorted order, closest to em first
   */
   SendClosestResponders(Sorted: string[]) {
-    
+
   }
 
   private handleError(error: any): Promise<any> {
