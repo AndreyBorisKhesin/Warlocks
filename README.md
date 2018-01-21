@@ -2,7 +2,8 @@
 # Doctors Within Borders
 ### A crowdsourcing app that improves first response time to emergencies by connecting city 911 dispatchers with certified civilians
 
-![Logo](dispatcher.png)
+<!-- ![Logo](dispatcher.png) -->
+<p align="center"> <img src="https://github.com/AndreyBorisKhesin/Warlocks.git/dispatcher.png" width=75%> </p>
 
 ## 1. The Challenge
 
@@ -16,7 +17,11 @@ the patient to arrive on scene so as to give the patient the help needed earlier
 
 ### a. Web view: the dispatcher
 
+The dispatcher takes down information about an ongoing emergency from a 911 call, and dispatches a Doctor with the help of our dashboard.
+
 ### b. Mobile view: the Doctor
+
+A Doctor is a certified individual who is registered with Doctors Within Borders. Each Doctor is identified by their unique code.
 
 ## 3. The Technology
 
