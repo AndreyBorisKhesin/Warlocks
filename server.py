@@ -64,9 +64,15 @@ def poll():
 		return jsonify({
 			'em': go,
 		})
-
+		
 @app.route('/closest', methods = ['POST'])
 def getClosest():
 	data = request.data.decode('utf-8')
 	store = json.loads(data)
 	# set closest to the data, somehow
+
+@app.route('/accepted', methods = ['POST'])
+def acceptedEmergency():
+    # Emergency has been accepted
+    global go
+    go = False
