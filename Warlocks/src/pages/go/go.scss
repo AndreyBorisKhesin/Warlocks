@@ -1,6 +1,30 @@
 page-go {
 	#map_canvas {
 		width: 100%;
-		height: 100%;
+		height: 80%;
+		text-align: end;
+		margin-bottom: 5px;
 	}
+}
+
+.info-column {
+	float: left;
+	width: 60%;
+	margin-left: 5px;
+	margin-right: 5px;
+	text-align: left;
+}
+
+.back-column {
+	float: right;
+	width: 35%;
+	margin-left: 0px;
+	margin-right: 0px;
+	vertical-align: top;
+	text-align: right;
+}
+
+ion-botton {
+	padding-right: 0;
+	margin-right: 0;
 }
