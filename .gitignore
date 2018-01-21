@@ -4,4 +4,5 @@ Warlocks/plugins/
 __pycache__/
 dispatcher/node_modules/
 Warlocks/www/
+Warlocks/.sourcemaps/
 .idea/
